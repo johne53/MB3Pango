@@ -2,3 +2,7 @@
 /msvc/pango.vsprops
 /config.h.win32
 /config.h
+/pango/pango.rc
+/pango/pangocairo.rc
+/pango/pangoft2.rc
+/pango/pangowin32.rc
