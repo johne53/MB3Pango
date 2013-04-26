@@ -727,14 +727,24 @@ const char *
 pango_get_sysconf_subdirectory (void)
 {
   static const gchar *result = NULL; /* MT-safe */
+  const char *env_path;
 
   if (g_once_init_enter ((gsize*)&result))
     {
       const char *tmp_result = NULL;
 #ifdef G_OS_WIN32
+      /* This function changed by JE - 17-02-2012 to allow us
+         to find pango.modules from an environment variable */
+      env_path = g_getenv("PANGO_MODULE_PATH");
+      if (env_path)
+          tmp_result = g_strdup(env_path);
+
+  if (tmp_result == NULL)
+    {
       gchar *root = g_win32_get_package_installation_directory_of_module (pango_dll);
       tmp_result = g_build_filename (root, "etc\\pango", NULL);
       g_free (root);
+	}
 #else
       const char *sysconfdir = g_getenv ("PANGO_SYSCONFDIR");
       if (sysconfdir != NULL)
