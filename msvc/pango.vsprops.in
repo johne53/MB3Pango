@@ -5,12 +5,24 @@
 	Name="pango"
 	>
 	<UserMacro
+		Name="PangoApiVersion"
+		Value="@PANGO_API_VERSION@"
+	/>
+	<UserMacro
 		Name="DllPrefix"
 		Value="lib"
 	/>
 	<UserMacro
 		Name="DllSuffix"
 		Value="-1.0-@LT_CURRENT_MINUS_AGE@"
+	/>
+	<UserMacro
+		Name="GlibDllSuffix"
+		Value="-2.0-0"
+	/>
+	<UserMacro
+		Name="CairoDllSuffix"
+		Value="-2"
 	/>
 	<UserMacro
 		Name="GlibBuildRootFolder"

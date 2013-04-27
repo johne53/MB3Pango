@@ -1,0 +1,37 @@
+/* Hand-written. Once the GNU configure mechanism is used
+ * on Win32, too, can be generated.
+*/
+
+#include "modules.h"
+
+#ifdef PANGO_MODULE_PREFIX
+void         _pango_arabic_lang_script_engine_list   (PangoEngineInfo **engines,
+                                                      gint             *n_engines);
+void         _pango_arabic_lang_script_engine_init   (GTypeModule      *module);
+void         _pango_arabic_lang_script_engine_exit   (void);
+PangoEngine *_pango_arabic_lang_script_engine_create (const char       *id);
+
+void         _pango_indic_lang_script_engine_list   (PangoEngineInfo **engines,
+                                                     gint             *n_engines);
+void         _pango_indic_lang_script_engine_init   (GTypeModule      *module);
+void         _pango_indic_lang_script_engine_exit   (void);
+PangoEngine *_pango_indic_lang_script_engine_create (const char       *id);
+#endif
+
+PangoIncludedModule _pango_included_lang_modules[] = {
+#ifdef PANGO_MODULE_PREFIX
+ { 
+   _pango_arabic_lang_script_engine_list,  
+   _pango_arabic_lang_script_engine_init, 
+   _pango_arabic_lang_script_engine_exit,  
+   _pango_arabic_lang_script_engine_create 
+ },
+ { 
+   _pango_indic_lang_script_engine_list,  
+   _pango_indic_lang_script_engine_init, 
+   _pango_indic_lang_script_engine_exit,  
+   _pango_indic_lang_script_engine_create 
+ },
+#endif
+ { NULL, NULL, NULL },
+};
