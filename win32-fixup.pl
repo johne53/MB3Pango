@@ -40,6 +40,8 @@ sub process_file
 	    s/\@Release32TestSuiteFolder@/$release32_testsuite_folder/g;
 	    s/\@Debug32TargetFolder@/$debug32_target_folder/g;
 	    s/\@Release32TargetFolder@/$release32_target_folder/g;
+	    s/\@Debug32PangoModulesFolder@/$debug32_pango_modules_folder/g;
+	    s/\@Release32PangoModulesFolder@/$release32_pango_modules_folder/g;
 	    s/\@TargetSxSFolder@/$target_sxs_folder/g;
 	    print OUTPUT;
 	}

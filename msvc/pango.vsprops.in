@@ -61,6 +61,14 @@
 		Value="@Release32TargetFolder@"
 	/>
 	<UserMacro
+		Name="Debug32PangoModulesFolder"
+		Value="@Debug32PangoModulesFolder@"
+	/>
+	<UserMacro
+		Name="Release32PangoModulesFolder"
+		Value="@Release32PangoModulesFolder@"
+	/>
+	<UserMacro
 		Name="TargetSxSFolder"
 		Value="@TargetSxSFolder@"
 	/>
