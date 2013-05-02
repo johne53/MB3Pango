@@ -172,6 +172,7 @@ pip-log.txt
 /pango/module-defs.h
 /pango/module-defs-lang.c
 /pango/module-defs-win32.c
+/pango/module-defs-fc.c
 /pango/pango-enum-types.c
 /pango/pango-enum-types.h
 /pango/pango-features.h
