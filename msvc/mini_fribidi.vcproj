@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="mini_fribidi"
-	ProjectGUID="{95348CA0-D1F4-4d64-A5E6-7F6DF261D2E0}"
+	ProjectGUID="{95348CA0-D1F4-4D64-A5E6-7F6DF261D2E0}"
 	RootNamespace="mini_fribidi"
 	>
 	<Platforms>
