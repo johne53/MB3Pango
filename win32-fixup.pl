@@ -8,7 +8,7 @@ $pango_version = "1.34.0";
 $major = 1;
 $minor = 34;
 $micro = 0;
-$binary_age = 134;
+$binary_age = 340;
 $interface_age = 0;
 $current_minus_age = 0;
 
