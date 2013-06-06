@@ -197,100 +197,6 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Debug 32 with Secure SCL|Win32"
-			OutputDirectory="$(ProjectDir)$(ConfigurationName)\bin"
-			IntermediateDirectory="$(ProjectDir)$(ConfigurationName)\obj\$(ProjectName)"
-			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops;.\pango.vsprops"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-				Description="Create &apos;module-defs-fc&apos;"
-				CommandLine="copy /Y &quot;..\pango\module-defs-fc.c.win32-msvc&quot; &quot;..\pango\module-defs-fc.c&quot;&#x0D;&#x0A;"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
-				Optimization="0"
-				AdditionalIncludeDirectories=".;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericIncludeFolder)\freetype2&quot;;&quot;$(GenericIncludeFolder)\harfbuzz&quot;;..\pango;.."
-				PreprocessorDefinitions="_SECURE_SCL=1;_HAS_ITERATOR_DEBUGGING=1;WIN32;DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;_WINDOWS;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
-				StructMemberAlignment="0"
-				RuntimeTypeInfo="false"
-				PrecompiledHeaderFile=".\Debug\libpangoft2_1_0/libpangoft2_1_0.pch"
-				WarningLevel="3"
-				SuppressStartupBanner="true"
-				DebugInformationFormat="3"
-				CompileAs="1"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="2057"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="iconvSCLD.lib freetype-2SCLD.lib $(DllPrefix)glib$(GlibDllSuffix)SCLD.lib $(DllPrefix)pango$(DllSuffix)SCLD.lib $(DllPrefix)gobject$(GlibDllSuffix)SCLD.lib $(DllPrefix)fontconfigSCLD.lib $(DllPrefix)xml2SCLD.lib zlib1SCLD.lib"
-				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix)SCLD.dll"
-				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
-				IgnoreDefaultLibraryNames="msvcrt.lib"
-				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
-				GenerateDebugInformation="true"
-				SubSystem="2"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-				UseFAT32Workaround="true"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-				SuppressStartupBanner="true"
-				OutputFile=".\Debug\libpangoft2_1_0/libpangoft2_1_0.bsc"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy /Y &quot;$(OutDir)\$(TargetName).dll&quot; &quot;$(Debug32TargetFolder)\$(TargetName).dll&quot;&#x0D;&#x0A;copy /Y &quot;$(OutDir)\$(TargetName).dll&quot; &quot;$(Debug32TestSuiteFolder)\$(TargetName).dll&quot;&#x0D;&#x0A;copy /Y &quot;$(OutDir)\$(TargetName).lib&quot; &quot;$(GenericWin32LibraryFolder)\$(TargetName).lib&quot;&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
 			Name="Debug 32|Win32"
 			OutputDirectory="$(ProjectDir)$(ConfigurationName)\bin"
 			IntermediateDirectory="$(ProjectDir)$(ConfigurationName)\obj\$(ProjectName)"
@@ -322,7 +228,7 @@
 				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
 				Optimization="0"
 				AdditionalIncludeDirectories=".;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericIncludeFolder)\freetype2&quot;;&quot;$(GenericIncludeFolder)\harfbuzz&quot;;..\pango;.."
-				PreprocessorDefinitions="_SECURE_SCL=0;_HAS_ITERATOR_DEBUGGING=0;WIN32;DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;_WINDOWS;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				PreprocessorDefinitions="WIN32;DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;_WINDOWS;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
