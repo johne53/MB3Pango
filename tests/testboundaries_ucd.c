@@ -215,7 +215,7 @@ make_test_string (gchar *string,
 }
 
 static void
-do_test (gchar *filename,
+do_test (const gchar *filename,
          AttrBits bits,
 	 gboolean fixup_broken_linebreaktest)
 {
@@ -322,43 +322,88 @@ done:
     g_io_channel_unref (channel);
   if (error)
     g_error_free (error);
-  g_free (filename);
+
+  g_assert (!failed);
 }
+
+static void
+test_grapheme_break (void)
+{
+  const gchar *filename;
+  AttrBits bits;
+
+#if GLIB_CHECK_VERSION(2, 37, 2)
+  filename = g_test_get_filename (G_TEST_DIST, "GraphemeBreakTest.txt", NULL);
+#else
+  filename = SRCDIR "/GraphemeBreakTest.txt";
+#endif
+  bits.bits = 0;
+  bits.attr.is_cursor_position = 1;
+  do_test (filename, bits, FALSE);
+}
+
+static void
+test_word_break (void)
+{
+  const gchar *filename;
+  AttrBits bits;
+
+#if GLIB_CHECK_VERSION(2, 37, 2)
+  filename = g_test_get_filename (G_TEST_DIST, "WordBreakTest.txt", NULL);
+#else
+  filename = SRCDIR "/WordBreakTest.txt";
+#endif
+  bits.bits = 0;
+  bits.attr.is_word_boundary = 1;
+  do_test (filename, bits, FALSE);
+}
+
+static void
+test_sentence_break (void)
+{
+  const gchar *filename;
+  AttrBits bits;
+
+#if GLIB_CHECK_VERSION(2, 37, 2)
+  filename = g_test_get_filename (G_TEST_DIST, "SentenceBreakTest.txt", NULL);
+#else
+  filename = SRCDIR "/SentenceBreakTest.txt";
+#endif
+  bits.bits = 0;
+  bits.attr.is_sentence_boundary = 1;
+  do_test (filename, bits, FALSE);
+}
+
+static void
+test_line_break (void)
+{
+  const gchar *filename;
+  AttrBits bits;
+
+#if GLIB_CHECK_VERSION(2, 37, 2)
+  filename = g_test_get_filename (G_TEST_DIST, "LineBreakTest.txt", NULL);
+#else
+  filename = SRCDIR "/LineBreakTest.txt";
+#endif
+  bits.bits = 0;
+  bits.attr.is_line_break = 1;
+  bits.attr.is_mandatory_break = 1;
+  do_test (filename, bits, TRUE);
+}
+
 
 gint
 main (gint argc,
       gchar **argv)
 {
-  gchar *srcdir;
-  gchar *filename;
-  AttrBits bits;
-
   setlocale (LC_ALL, "");
 
-  srcdir = getenv ("srcdir");
-  if (!srcdir)
-    srcdir = ".";
+  g_test_init (&argc, &argv, NULL);
 
-  filename = g_strdup_printf ("%s/GraphemeBreakTest.txt", srcdir);
-  bits.bits = 0;
-  bits.attr.is_cursor_position = 1;
-  do_test (filename, bits, FALSE);
+  g_test_add_func ("/text/break/grapheme", test_grapheme_break);
+  g_test_add_func ("/text/break/word", test_word_break);
+  g_test_add_func ("/text/break/sentence", test_sentence_break);
+  g_test_add_func ("/text/break/line", test_line_break);
 
-  filename = g_strdup_printf ("%s/WordBreakTest.txt", srcdir);
-  bits.bits = 0;
-  bits.attr.is_word_boundary = 1;
-  do_test (filename, bits, FALSE);
-
-  filename = g_strdup_printf ("%s/SentenceBreakTest.txt", srcdir);
-  bits.bits = 0;
-  bits.attr.is_sentence_boundary = 1;
-  do_test (filename, bits, FALSE);
-
-  filename = g_strdup_printf ("%s/LineBreakTest.txt", srcdir);
-  bits.bits = 0;
-  bits.attr.is_line_break = 1;
-  bits.attr.is_mandatory_break = 1;
-  do_test (filename, bits, TRUE);
-
-  exit (failed);
+  return g_test_run ();
 }
