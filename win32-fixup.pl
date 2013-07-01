@@ -48,10 +48,10 @@ sub process_file
 }
 
 process_file ("config.h.win32");
-process_file ("pango/pango-features.h");
 
 my $command=join(' ',@ARGV);
 if ($command eq -buildall) {
+	process_file ("pango/pango-features.h");
 	process_file ("pango/pango.rc");
 	process_file ("pango/pangocairo.rc");
 	process_file ("pango/pangoft2.rc");
