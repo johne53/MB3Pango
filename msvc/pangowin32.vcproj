@@ -71,7 +71,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)pango$(DllSuffix)D.lib $(DllPrefix)gobject$(GlibDllSuffix)D.lib $(DllPrefix)glib$(GlibDllSuffix)D.lib"
+				AdditionalDependencies="$(DllPrefix)pango$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix)D.dll"
 				AdditionalLibraryDirectories="&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
@@ -163,7 +163,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)pango$(DllSuffix).lib $(DllPrefix)gobject$(GlibDllSuffix).lib $(DllPrefix)glib$(GlibDllSuffix).lib"
+				AdditionalDependencies="$(DllPrefix)pango$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)glib32$(GlibDllSuffix).lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix).dll"
 				AdditionalLibraryDirectories="&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
@@ -253,7 +253,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)pango$(DllSuffix)RDC.lib $(DllPrefix)gobject$(GlibDllSuffix)RDC.lib $(DllPrefix)glib$(GlibDllSuffix)RDC.lib"
+				AdditionalDependencies="$(DllPrefix)pango$(DllSuffix)RDC.lib $(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)glib32$(GlibDllSuffix)RDC.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix)RDC.dll"
 				AdditionalLibraryDirectories="&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"

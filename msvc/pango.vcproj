@@ -71,7 +71,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)gobject$(GlibDllSuffix)D.lib $(DllPrefix)gmodule$(GlibDllSuffix)D.lib $(DllPrefix)glib$(GlibDllSuffix)D.lib $(DllPrefix)mini_fribidi$(DllSuffix)D.lib"
+				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)gmodule32$(GlibDllSuffix)D.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)mini_fribidi$(DllSuffix)D.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix)D.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
@@ -162,7 +162,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)gobject$(GlibDllSuffix).lib $(DllPrefix)gmodule$(GlibDllSuffix).lib $(DllPrefix)glib$(GlibDllSuffix).lib $(DllPrefix)mini_fribidi$(DllSuffix).lib"
+				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)gmodule32$(GlibDllSuffix).lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)mini_fribidi$(DllSuffix).lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix).dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
@@ -251,7 +251,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)gobject$(GlibDllSuffix)RDC.lib $(DllPrefix)gmodule$(GlibDllSuffix)RDC.lib $(DllPrefix)glib$(GlibDllSuffix)RDC.lib $(DllPrefix)mini_fribidi$(DllSuffix)RDC.lib"
+				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)gmodule32$(GlibDllSuffix)RDC.lib $(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)mini_fribidi$(DllSuffix)RDC.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix)RDC.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;"
 				IgnoreDefaultLibraryNames=""

@@ -68,7 +68,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)glib$(GlibDllSuffix)D.lib $(DllPrefix)pango$(DllSuffix)D.lib $(DllPrefix)gobject$(GlibDllSuffix)D.lib $(DllPrefix)pangoft2$(DllSuffix)D.lib"
+				AdditionalDependencies="$(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)pango$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)pangoft2$(DllSuffix)D.lib"
 				OutputFile="$(OutDir)\$(ProjectName)D.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\modules\module.def"
@@ -158,7 +158,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)glib$(GlibDllSuffix).lib $(DllPrefix)pango$(DllSuffix).lib $(DllPrefix)gobject$(GlibDllSuffix).lib $(DllPrefix)pangoft2$(DllSuffix).lib"
+				AdditionalDependencies="$(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)pangoft2$(DllSuffix).lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\modules\module.def"
@@ -246,7 +246,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)glib$(GlibDllSuffix)RDC.lib $(DllPrefix)pango$(DllSuffix)RDC.lib $(DllPrefix)gobject$(GlibDllSuffix)RDC.lib $(DllPrefix)pangoft2$(DllSuffix)RDC.lib"
+				AdditionalDependencies="$(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)pango$(DllSuffix)RDC.lib $(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)pangoft2$(DllSuffix)RDC.lib"
 				OutputFile="$(OutDir)\$(ProjectName)RDC.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\modules\module.def"
