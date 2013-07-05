@@ -70,7 +70,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="iconv.lib freetype-2.lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)fontconfig.lib $(DllPrefix)xml2.lib zlib1.lib"
+				AdditionalDependencies="iconv.lib freetype32-2.lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)fontconfig.lib $(DllPrefix)xml2.lib zlib1.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix).dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
@@ -160,7 +160,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="iconvRDC.lib freetype-2RDC.lib $(DllPrefix)harfbuzzRDC.lib $(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)pango$(DllSuffix)RDC.lib $(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)fontconfigRDC.lib $(DllPrefix)xml2RDC.lib zlib1RDC.lib"
+				AdditionalDependencies="iconvRDC.lib freetype32-2RDC.lib $(DllPrefix)harfbuzzRDC.lib $(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)pango$(DllSuffix)RDC.lib $(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)fontconfigRDC.lib $(DllPrefix)xml2RDC.lib zlib1RDC.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix)RDC.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
@@ -253,7 +253,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="iconvD.lib freetype-2D.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)pango$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)fontconfigD.lib $(DllPrefix)xml2D.lib zlib1D.lib"
+				AdditionalDependencies="iconvD.lib freetype32-2D.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)pango$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)fontconfigD.lib $(DllPrefix)xml2D.lib zlib1D.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)$(DllSuffix)D.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
