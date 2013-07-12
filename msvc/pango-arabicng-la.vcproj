@@ -68,8 +68,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)pango$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)pangoft2$(DllSuffix)D.lib"
-				OutputFile="$(OutDir)\$(ProjectName)D.dll"
+				AdditionalDependencies="$(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)pango32$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)pangoft232$(DllSuffix)D.lib"
+				OutputFile="$(OutDir)\$(ProjectName)32D.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\modules\module.def"
 				GenerateDebugInformation="true"
@@ -158,8 +158,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)pangoft2$(DllSuffix).lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				AdditionalDependencies="$(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango32$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)pangoft232$(DllSuffix).lib"
+				OutputFile="$(OutDir)\$(ProjectName)32.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\modules\module.def"
 				GenerateDebugInformation="false"
@@ -246,8 +246,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)pango$(DllSuffix)RDC.lib $(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)pangoft2$(DllSuffix)RDC.lib"
-				OutputFile="$(OutDir)\$(ProjectName)RDC.dll"
+				AdditionalDependencies="$(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)pango32$(DllSuffix)RDC.lib $(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)pangoft232$(DllSuffix)RDC.lib"
+				OutputFile="$(OutDir)\$(ProjectName)32RDC.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\modules\module.def"
 				GenerateDebugInformation="true"

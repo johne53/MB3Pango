@@ -68,7 +68,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="USP10.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)pango$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)pangowin32$(DllSuffix)D.lib"
+				AdditionalDependencies="USP10.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)pango32$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)pangowin32$(DllSuffix)D.lib"
 				OutputFile="$(OutDir)\$(ProjectName)D.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\modules\module.def"
@@ -158,7 +158,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="USP10.lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)pangowin32$(DllSuffix).lib"
+				AdditionalDependencies="USP10.lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango32$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)pangowin32$(DllSuffix).lib"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\modules\module.def"
 				SubSystem="2"
@@ -245,7 +245,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="USP10.lib $(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)pango$(DllSuffix)RDC.lib $(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)pangowin32$(DllSuffix)RDC.lib"
+				AdditionalDependencies="USP10.lib $(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)pango32$(DllSuffix)RDC.lib $(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)pangowin32$(DllSuffix)RDC.lib"
 				OutputFile="$(OutDir)\$(ProjectName)RDC.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\modules\module.def"
