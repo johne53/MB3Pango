@@ -616,7 +616,7 @@ read_config (void)
 {
   static GHashTable *config_hash = NULL;
 
-  if (g_once_init_enter ((gsize*)&config_hash))
+  if (g_once_init_enter (&config_hash))
     {
       GHashTable *tmp_hash;
       char *filename;
@@ -635,7 +635,7 @@ read_config (void)
       if (envvar)
         read_config_file (envvar, TRUE, tmp_hash);
 
-      g_once_init_leave ((gsize*)&config_hash, (gsize)tmp_hash);
+      g_once_init_leave (&config_hash, tmp_hash);
     }
 
   return config_hash;
@@ -729,7 +729,7 @@ pango_get_sysconf_subdirectory (void)
   static const gchar *result = NULL; /* MT-safe */
   const char *env_path;
 
-  if (g_once_init_enter ((gsize*)&result))
+  if (g_once_init_enter (&result))
     {
       const char *tmp_result = NULL;
 #ifdef G_OS_WIN32
@@ -752,7 +752,7 @@ pango_get_sysconf_subdirectory (void)
       else
 	tmp_result = SYSCONFDIR "/pango";
 #endif
-      g_once_init_leave((gsize*)&result, (gsize)tmp_result);
+      g_once_init_leave(&result, tmp_result);
     }
   return result;
 }
@@ -773,7 +773,7 @@ pango_get_lib_subdirectory (void)
 {
   static const gchar *result = NULL; /* MT-safe */
 
-  if (g_once_init_enter ((gsize*)&result))
+  if (g_once_init_enter (&result))
     {
       const gchar *tmp_result = NULL;
 #ifdef G_OS_WIN32
@@ -793,7 +793,7 @@ pango_get_lib_subdirectory (void)
       else
 	tmp_result = LIBDIR "/pango";
 #endif
-      g_once_init_leave((gsize*)&result, (gsize)tmp_result);
+      g_once_init_leave(&result, tmp_result);
     }
   return result;
 }
