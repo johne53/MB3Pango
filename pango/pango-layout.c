@@ -599,7 +599,7 @@ pango_layout_get_spacing (PangoLayout *layout)
 /**
  * pango_layout_set_attributes:
  * @layout: a #PangoLayout
- * @attrs: (allow-none) (transfer full): a #PangoAttrList, can be %NULL
+ * @attrs: (allow-none) (transfer none): a #PangoAttrList, can be %NULL
  *
  * Sets the text attributes for a layout object.
  * References @attrs, so the caller can unref its reference.
@@ -1099,6 +1099,11 @@ const char*
 pango_layout_get_text (PangoLayout *layout)
 {
   g_return_val_if_fail (PANGO_IS_LAYOUT (layout), NULL);
+
+  /* We don't ever want to return NULL as the text.
+   */
+  if (G_UNLIKELY (!layout->text))
+    return "";
 
   return layout->text;
 }
