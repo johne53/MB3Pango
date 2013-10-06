@@ -21,8 +21,8 @@ dnl
 
 dnl The triplet
 m4_define([pango_version_major], [1])
-m4_define([pango_version_minor], [35])
-m4_define([pango_version_micro], [3])
+m4_define([pango_version_minor], [36])
+m4_define([pango_version_micro], [0])
 
 m4_define([pango_version],
           [pango_version_major.pango_version_minor.pango_version_micro])
@@ -592,7 +592,7 @@ if $have_cairo ; then : ; else
    fi
 fi
 
-GTK_DOC_CHECK([1.0])
+GTK_DOC_CHECK([1.15], [--flavour no-tmpl])
 
 AC_ARG_ENABLE(man,
               AC_HELP_STRING([--enable-man],

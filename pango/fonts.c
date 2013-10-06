@@ -19,6 +19,19 @@
  * Boston, MA 02111-1307, USA.
  */
 
+/**
+ * SECTION:fonts
+ * @short_description:Structures representing abstract fonts
+ * @title: Fonts
+ *
+ * Pango supports a flexible architecture where a
+ * particular rendering architecture can supply an
+ * implementation of fonts. The #PangoFont structure
+ * represents an abstract rendering-system-independent font.
+ * Pango provides routines to list available fonts, and
+ * to load a font of a given description.
+ */
+
 #include "config.h"
 #include <stdlib.h>
 #include <math.h>
@@ -890,7 +903,7 @@ static const FieldMap stretch_map[] = {
 static const FieldMap gravity_map[] = {
   { PANGO_GRAVITY_SOUTH, "Not-Rotated" },
   { PANGO_GRAVITY_SOUTH, "South" },
-  { PANGO_GRAVITY_SOUTH, "Upside-Down" },
+  { PANGO_GRAVITY_NORTH, "Upside-Down" },
   { PANGO_GRAVITY_NORTH, "North" },
   { PANGO_GRAVITY_EAST,  "Rotated-Left" },
   { PANGO_GRAVITY_EAST,  "East" },
