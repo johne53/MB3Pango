@@ -11,6 +11,7 @@ $micro = 0;
 $binary_age = 3600;
 $interface_age = 0;
 $current_minus_age = 0;
+$exec_prefix = "lib";
 
 sub process_file
 {
@@ -21,8 +22,9 @@ sub process_file
 	open (OUTPUT, "> $outfilename") || exit 1;
 	
 	while (<INPUT>) {
-	    s/\@PANGO_API_VERSION@/$api_version/g;
+	    s/\@VERSION@/$pango_version/g;
 	    s/\@PANGO_VERSION@/$pango_version/g;
+	    s/\@PANGO_API_VERSION@/$api_version/g;
 	    s/\@PANGO_VERSION_MAJOR\@/$major/g;
 	    s/\@PANGO_VERSION_MINOR\@/$minor/g;
 	    s/\@PANGO_VERSION_MICRO\@/$micro/g;
@@ -43,11 +45,19 @@ sub process_file
 	    s/\@Debug32PangoModulesFolder@/$debug32_pango_modules_folder/g;
 	    s/\@Release32PangoModulesFolder@/$release32_pango_modules_folder/g;
 	    s/\@TargetSxSFolder@/$target_sxs_folder/g;
+	    s/\@prefix@/$prefix/g;
+	    s/\@exec_prefix@/$exec_prefix/g;
+	    s/\@includedir@/$generic_include_folder/g;
+	    s/\@libdir@/$generic_library_folder/g;
 	    print OUTPUT;
 	}
 }
 
 process_file ("config.h.win32");
+process_file ("pango.pc");
+process_file ("pangocairo.pc");
+process_file ("pangoft2.pc");
+process_file ("pangowin32.pc");
 
 my $command=join(' ',@ARGV);
 if ($command eq -buildall) {

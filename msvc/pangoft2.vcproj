@@ -195,7 +195,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy /Y &quot;..\pango\pangoft2.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\pangofc-font.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\pangofc-decoder.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\pangofc-fontmap.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot;&#x0D;&#x0A;copy /Y &quot;$(OutDir)\$(TargetName).dll&quot; &quot;$(Release32TestSuiteFolder)\$(TargetName).dll&quot;&#x0D;&#x0A;copy /Y &quot;$(OutDir)\$(TargetName).lib&quot; &quot;$(GenericWin32LibraryFolder)\$(TargetName).lib&quot;&#x0D;&#x0A;"
+				CommandLine="copy /Y &quot;..\pango\pangoft2.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\pangofc-font.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\pangofc-decoder.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\pangofc-fontmap.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot;&#x0D;&#x0A;copy /Y &quot;$(OutDir)\$(TargetName).dll&quot; &quot;$(Release32TestSuiteFolder)\$(TargetName).dll&quot;&#x0D;&#x0A;copy /Y &quot;$(OutDir)\$(TargetName).lib&quot; &quot;$(GenericWin32LibraryFolder)\$(TargetName).lib&quot;&#x0D;&#x0A;copy /Y &quot;..\pangoft2.pc&quot; &quot;$(GenericLibraryFolder)\pkgconfig&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
