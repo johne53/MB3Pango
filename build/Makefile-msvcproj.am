@@ -45,8 +45,6 @@ pango_vcproj_stuff = \
 	$(top_builddir)/build/win32/vs10/pango.vcxproj.filters	\
 	$(top_builddir)/build/win32/vs10/pangocairo.vcxproj	\
 	$(top_builddir)/build/win32/vs10/pangocairo.vcxproj.filters	\
-	$(top_builddir)/build/win32/vs10/pangocairo_fc.vcxproj	\
-	$(top_builddir)/build/win32/vs10/pangocairo_fc.vcxproj.filters	\
 	$(top_builddir)/build/win32/vs10/pangoft2.vcxproj	\
 	$(top_builddir)/build/win32/vs10/pangoft2.vcxproj.filters	\
 	$(top_builddir)/build/win32/vs10/pango.vs10.headers
@@ -210,24 +208,6 @@ $(top_builddir)/build/win32/vs10/pangocairo.vcxproj.filters: \
 # (Seperator)
 	-$(RM) $@
 	$(CPP) -I$(top_builddir)/build -P - <$(top_srcdir)/build/win32/vs10/pangocairo.vcxproj.filtersin >$@
-
-$(top_builddir)/build/win32/vs10/pangocairo_fc.vcxproj: \
-	$(top_srcdir)/build/win32/vs10/pangocairo_fc.vcxprojin \
-	$(top_builddir)/build/libpangocairo.vs10.sourcefiles \
-	$(top_builddir)/build/win32/vs10/pangocairo.vcxproj
-# (Seperator)
-	-$(RM) $@
-	$(CPP) -I$(top_builddir)/build -P - <$(top_srcdir)/build/win32/vs10/pangocairo_fc.vcxprojin >$@
-	-$(RM) $(top_builddir)/build/libpangocairo.vs10.sourcefiles
-
-$(top_builddir)/build/win32/vs10/pangocairo_fc.vcxproj.filters: \
-	$(top_srcdir)/build/win32/vs10/pangocairo_fc.vcxproj.filtersin \
-	$(top_builddir)/build/libpangocairo.vs10.sourcefiles.filters \
-	$(top_builddir)/build/win32/vs10/pangocairo.vcxproj.filters
-# (Seperator)
-	-$(RM) $@
-	$(CPP) -I$(top_builddir)/build -P - <$(top_srcdir)/build/win32/vs10/pangocairo.vcxproj.filtersin >$@
-	-$(RM) $(top_builddir)/build/libpangocairo.vs10.sourcefiles.filters
 
 ##############################################
 # Now fill in the header "installation" list #
