@@ -1,3 +1,14 @@
+Overview of changes between 1.36.4 and 1.36.5
+=============================================
+- Lower the harfbuzz requirement
+
+Overview of changes between 1.36.3 and 1.36.4
+=============================================
+- Improve thread-safety on Windows (#695913)
+- Add missing annotations (#729840)
+- Update PangoWeight documentation
+- Require harfbuzz 0.9.29
+
 Overview of changes between 1.36.2 and 1.36.3
 =============================================
 - Fix builddir != srdir builds
