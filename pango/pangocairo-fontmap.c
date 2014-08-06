@@ -58,6 +58,13 @@ pango_cairo_font_map_default_init (PangoCairoFontMapIface *iface)
  * You generally should only use the #PangoFontMap and
  * #PangoCairoFontMap interfaces on the returned object.
  *
+ * You can override the type of backend returned by using an
+ * environment variable %PANGOCAIRO_BACKEND.  Supported types,
+ * based on your build, are fc (fontconfig), win32, and coretext.
+ * If requested type is not available, NULL is returned. Ie.
+ * this is only useful for testing, when at least two backends
+ * are compiled in.
+ *
  * Return value: (transfer full): the newly allocated #PangoFontMap,
  *               which should be freed with g_object_unref().
  *
@@ -66,20 +73,41 @@ pango_cairo_font_map_default_init (PangoCairoFontMapIface *iface)
 PangoFontMap *
 pango_cairo_font_map_new (void)
 {
+  const char *backend = getenv ("PANGOCAIRO_BACKEND");
+  if (backend && !*backend)
+    backend = NULL;
 #if !GLIB_CHECK_VERSION (2, 35, 3)
   /* Make sure that the type system is initialized */
   g_type_init ();
 #endif
 #if defined(HAVE_CORE_TEXT) && defined (HAVE_CAIRO_QUARTZ)
-  return g_object_new (PANGO_TYPE_CAIRO_CORE_TEXT_FONT_MAP, NULL);
-#elif defined(HAVE_CAIRO_WIN32)
-  return g_object_new (PANGO_TYPE_CAIRO_WIN32_FONT_MAP, NULL);
-#elif defined(HAVE_CAIRO_FREETYPE)
-  return g_object_new (PANGO_TYPE_CAIRO_FC_FONT_MAP, NULL);
-#else
-  g_assert_not_reached ();
-  return NULL;
+  if (!backend || 0 == strcmp (backend, "coretext"))
+    return g_object_new (PANGO_TYPE_CAIRO_CORE_TEXT_FONT_MAP, NULL);
 #endif
+#if defined(HAVE_CAIRO_WIN32)
+  if (!backend || 0 == strcmp (backend, "win32"))
+    return g_object_new (PANGO_TYPE_CAIRO_WIN32_FONT_MAP, NULL);
+#endif
+#if defined(HAVE_CAIRO_FREETYPE)
+  if (!backend || 0 == strcmp (backend, "fc")
+	       || 0 == strcmp (backend, "fontconfig"))
+    return g_object_new (PANGO_TYPE_CAIRO_FC_FONT_MAP, NULL);
+#endif
+  {
+    const char backends[] = ""
+#if defined(HAVE_CORE_TEXT) && defined (HAVE_CAIRO_QUARTZ)
+      " coretext"
+#endif
+#if defined(HAVE_CAIRO_WIN32)
+      " win32"
+#endif
+#if defined(HAVE_CAIRO_FREETYPE)
+      " fontconfig"
+#endif
+      ;
+    g_error ("Unknown $PANGOCAIRO_BACKEND value.\n  Available backends are:%s", backends);
+  }
+  return NULL;
 }
 
 /**
