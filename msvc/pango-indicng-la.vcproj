@@ -280,7 +280,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy /Y &quot;$(OutDir)\$(TargetName).dll&quot; &quot;$(Release32PangoModulesFolder)\$(TargetName).dll&quot;&#x0D;&#x0A;copy /Y &quot;$(OutDir)\$(TargetName).dll&quot; &quot;$(Debug32PangoModulesFolder)\$(TargetName).dll&quot;&#x0D;&#x0A;"
+				CommandLine="copy /Y &quot;$(OutDir)\$(TargetName).dll&quot; &quot;$(Debug32PangoModulesFolder)\$(TargetName).dll&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
