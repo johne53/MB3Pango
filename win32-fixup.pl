@@ -4,11 +4,11 @@
 require "../local-paths.lib";
 
 $api_version = "1.0";
-$pango_version = "1.36.7";
+$pango_version = "1.37.0";
 $major = 1;
-$minor = 36;
-$micro = 7;
-$binary_age = 3607;
+$minor = 37;
+$micro = 0;
+$binary_age = 3700;
 $interface_age = 1;
 $current_minus_age = 0;
 $exec_prefix = "lib";
