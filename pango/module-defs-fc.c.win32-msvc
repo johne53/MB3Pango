@@ -1,0 +1,17 @@
+/* Hand-written. Once the GNU configure mechanism is used
+ * on Win32, too, can be generated.
+*/
+
+#include "module-defs.h"
+
+PangoIncludedModule _pango_included_fc_modules[] = {
+#ifdef PANGO_MODULE_PREFIX
+ { 
+   _pango_basic_fc_script_engine_list,
+   _pango_basic_fc_script_engine_init,
+   _pango_basic_fc_script_engine_exit,
+   _pango_basic_fc_script_engine_create
+ },
+#endif
+ { NULL, NULL, NULL, NULL },
+};
