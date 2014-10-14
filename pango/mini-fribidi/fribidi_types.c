@@ -19,7 +19,7 @@
  * For licensing issues, contact <fwpg@sharif.edu>. 
  */
 
-#include "config.h"
+/* Commented out by JE - 26-04-2013 #include "config.h" */
 #include "fribidi.h"
 
 #ifdef DEBUG

@@ -49,8 +49,8 @@
 /* Define to 1 if you have the `getpagesize' function. */
 /* #undef HAVE_GETPAGESIZE */
 
-/* Define to 1 if you have the <inttypes.h> header file. */
-/*#undef HAVE_INTTYPES_H */
+/* Define to 1 if you have the <inttypes.h> header file. */ /* Defined by JE - 10-10-2010 */
+#define HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the <memory.h> header file. */
 /* #undef HAVE_MEMORY_H */
@@ -66,8 +66,8 @@
 /* Define to 1 if you have the <stdlib.h> header file. */
 #define HAVE_STDLIB_H 1
 
-/* Define to 1 if you have the <strings.h> header file. */
-/* #undef HAVE_STRINGS_H */
+/* Define to 1 if you have the <strings.h> header file. */ /* Defined by JE - 10-10-2010 */
+#define HAVE_STRINGS_H 1
 
 /* Define to 1 if you have the <string.h> header file. */
 #define HAVE_STRING_H 1
@@ -152,3 +152,18 @@
 
 /* Version number of package */
 #define VERSION "@PANGO_VERSION@"
+
+/* These added by JE - 10-10-2010. */
+#ifndef G_LOG_DOMAIN
+#define G_LOG_DOMAIN "Pango"
+#endif
+
+#ifndef LIBDIR
+#define LIBDIR "Not set (placeholder)"
+#endif
+
+#ifndef SYSCONFDIR
+#define SYSCONFDIR "Not set (placeholder)"
+#endif
+
+#include "stdint.h" /* Added by JE - 12-10-2010 (eliminates various warnings about redefinition of SIZE_MAX */
