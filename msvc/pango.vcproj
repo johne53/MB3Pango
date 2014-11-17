@@ -317,6 +317,30 @@
 			<File
 				RelativePath="..\pango\module-defs-lang.c"
 				>
+				<FileConfiguration
+					Name="Debug 32|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="PANGO_MODULE_PREFIX"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release 32|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="PANGO_MODULE_PREFIX"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release 32 with Debugging Capability|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="PANGO_MODULE_PREFIX"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\pango\modules.c"
@@ -410,6 +434,70 @@
 				RelativePath="..\pango\shape.c"
 				>
 			</File>
+			<Filter
+				Name="Arabic-lang"
+				>
+				<File
+					RelativePath="..\modules\arabic\arabic-lang.c"
+					>
+					<FileConfiguration
+						Name="Debug 32|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_arabic_lang"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release 32|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_arabic_lang"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release 32 with Debugging Capability|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_arabic_lang"
+						/>
+					</FileConfiguration>
+				</File>
+			</Filter>
+			<Filter
+				Name="Indic-lang"
+				>
+				<File
+					RelativePath="..\modules\indic\indic-lang.c"
+					>
+					<FileConfiguration
+						Name="Debug 32|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_indic_lang"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release 32|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_indic_lang"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release 32 with Debugging Capability|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_indic_lang"
+						/>
+					</FileConfiguration>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
