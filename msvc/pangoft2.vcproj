@@ -48,7 +48,7 @@
 				Optimization="2"
 				InlineFunctionExpansion="1"
 				AdditionalIncludeDirectories=".;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;&quot;$(GenericIncludeFolder)\harfbuzz&quot;;..\pango;.."
-				PreprocessorDefinitions="_SECURE_SCL=0;WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_WINDOWS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_basic_fc;_SECURE_SCL=0;WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_WINDOWS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				StringPooling="false"
 				RuntimeLibrary="2"
 				EnableEnhancedInstructionSet="1"
@@ -71,7 +71,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="iconv.lib freetype32-2.lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango32$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)fontconfig.lib $(DllPrefix)xml2.lib zlib1.lib"
+				AdditionalDependencies="iconv.lib freetype32-2.lib $(DllPrefix)harfbuzz.lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango32$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)fontconfig.lib $(DllPrefix)xml2.lib zlib1.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix).dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
@@ -138,7 +138,7 @@
 				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
 				Optimization="0"
 				AdditionalIncludeDirectories=".;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;&quot;$(GenericIncludeFolder)\harfbuzz&quot;;..\pango;.."
-				PreprocessorDefinitions="_SECURE_SCL=0;WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_WINDOWS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_basic_fc;_SECURE_SCL=0;WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_WINDOWS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				StringPooling="false"
 				RuntimeLibrary="2"
 				EnableEnhancedInstructionSet="1"
@@ -230,7 +230,7 @@
 				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
 				Optimization="0"
 				AdditionalIncludeDirectories=".;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;&quot;$(GenericIncludeFolder)\harfbuzz&quot;;..\pango;.."
-				PreprocessorDefinitions="WIN32;DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;_WINDOWS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_basic_fc;WIN32;DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;_WINDOWS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -255,7 +255,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="iconvD.lib freetype32-2D.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)pango32$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)fontconfigD.lib $(DllPrefix)xml2D.lib zlib1D.lib"
+				AdditionalDependencies="iconvD.lib freetype32-2D.lib $(DllPrefix)harfbuzzD.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)pango32$(DllSuffix)D.lib $(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)fontconfigD.lib $(DllPrefix)xml2D.lib zlib1D.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix)D.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
@@ -344,6 +344,14 @@
 				RelativePath="..\pango\pangoft2.c"
 				>
 			</File>
+			<Filter
+				Name="Basic-fc"
+				>
+				<File
+					RelativePath="..\modules\basic\basic-fc.c"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
