@@ -40,7 +40,7 @@
 #include "pangowin32.h"
 #include "pangowin32-private.h"
 
-#define MAX_FREED_FONTS 16
+#define MAX_FREED_FONTS 256
 
 #define CH_IS_UNIHAN_BMP(ch) ((ch) >= 0x3400 && (ch) <= 0x9FFF)
 #define CH_IS_UNIHAN(ch) (CH_IS_UNIHAN_BMP (ch) || \
@@ -845,7 +845,10 @@ pango_win32_font_finalize (GObject *object)
 
   fontmap = g_weak_ref_get ((GWeakRef *) &win32font->fontmap);
   if (fontmap)
+  {
+    g_object_remove_weak_pointer (G_OBJECT (win32font->fontmap), (gpointer *) (gpointer) &win32font->fontmap);
     g_object_unref (fontmap);
+  }
 
   G_OBJECT_CLASS (_pango_win32_font_parent_class)->finalize (object);
 }
