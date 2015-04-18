@@ -48,7 +48,7 @@
 				ModuleDefinitionFile="..\..\..\pango\pangowin32.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
-				ImportLibrary="$(TargetDir)$(ProjectName)-$(PangoApiVersion).lib"
+				ImportLibrary="$(TargetDir)$(ProjectName)-$(ApiVersion).lib"
 				TargetMachine="1"
 			/>
 		</Configuration>
@@ -80,7 +80,7 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(TargetDir)$(ProjectName)-$(PangoApiVersion).lib"
+				ImportLibrary="$(TargetDir)$(ProjectName)-$(ApiVersion).lib"
 				TargetMachine="1"
 			/>
 		</Configuration>
@@ -109,7 +109,7 @@
 				ModuleDefinitionFile="..\..\..\pango\pangowin32.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
-				ImportLibrary="$(TargetDir)$(ProjectName)-$(PangoApiVersion).lib"
+				ImportLibrary="$(TargetDir)$(ProjectName)-$(ApiVersion).lib"
 				TargetMachine="17"
 			/>
 		</Configuration>
@@ -138,7 +138,7 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(TargetDir)$(ProjectName)-$(PangoApiVersion).lib"
+				ImportLibrary="$(TargetDir)$(ProjectName)-$(ApiVersion).lib"
 				TargetMachine="17"
 			/>
 		</Configuration>
@@ -164,16 +164,7 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
-			<File RelativePath="..\..\..\modules\basic\basic-win32.c" >
-				<FileConfiguration Name="Debug|Win32"><Tool Name="VCCLCompilerTool"	PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_basic_win32" /></FileConfiguration>
-				<FileConfiguration Name="Release|Win32"><Tool Name="VCCLCompilerTool" PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_basic_win32" /></FileConfiguration>
-				<FileConfiguration Name="Debug|x64"><Tool Name="VCCLCompilerTool" PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_basic_win32" /></FileConfiguration>
-				<FileConfiguration Name="Release|x64"><Tool Name="VCCLCompilerTool" PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_basic_win32" /></FileConfiguration>
-			</File>
-			<File RelativePath="..\..\..\pango\module-defs-win32.c" />
-			<File RelativePath="..\..\..\pango\pangowin32-fontcache.c" />
-			<File RelativePath="..\..\..\pango\pangowin32-fontmap.c" />
-			<File RelativePath="..\..\..\pango\pangowin32.c" />
+#include "pangowin32.sourcefiles"
 		</Filter>
 	</Files>
 	<Globals>
