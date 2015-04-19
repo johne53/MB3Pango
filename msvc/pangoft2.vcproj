@@ -27,8 +27,8 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Create &apos;module-defs-fc&apos;"
-				CommandLine="copy /Y &quot;..\pango\module-defs-fc.c.win32-msvc&quot; &quot;..\pango\module-defs-fc.c&quot;&#x0D;&#x0A;"
+				Description=""
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -118,8 +118,8 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Create &apos;module-defs-fc&apos;"
-				CommandLine="copy /Y &quot;..\pango\module-defs-fc.c.win32-msvc&quot; &quot;..\pango\module-defs-fc.c&quot;&#x0D;&#x0A;"
+				Description=""
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -210,8 +210,8 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Create &apos;module-defs-fc&apos;"
-				CommandLine="copy /Y &quot;..\pango\module-defs-fc.c.win32-msvc&quot; &quot;..\pango\module-defs-fc.c&quot;&#x0D;&#x0A;"
+				Description=""
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -301,10 +301,6 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;for;f90"
 			>
 			<File
-				RelativePath="..\pango\module-defs-fc.c"
-				>
-			</File>
-			<File
 				RelativePath="..\pango\pango-ot-buffer.c"
 				>
 			</File>
@@ -348,7 +344,7 @@
 				Name="Basic-fc"
 				>
 				<File
-					RelativePath="..\modules\basic\basic-fc.c"
+					RelativePath="..\pango\pangofc-shape.c"
 					>
 				</File>
 			</Filter>

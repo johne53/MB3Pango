@@ -27,7 +27,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Prepare enumtypes and configuration file(s)"
-				CommandLine="copy /Y &quot;..\pango\pango-enum-types.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango\pango-enum-types.h&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\module-defs-lang.c.win32-msvc&quot; &quot;..\pango\module-defs-lang.c&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\module-defs.h.win32&quot; &quot;..\pango\module-defs.h&quot;&#x0D;&#x0A;cd ..&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;config.h&quot;&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\config.h&quot;&#x0D;&#x0A;"
+				CommandLine="copy /Y &quot;..\pango\pango-enum-types.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango\pango-enum-types.h&quot;&#x0D;&#x0A;cd ..&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;config.h&quot;&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\config.h&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -121,7 +121,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Prepare enumtypes and configuration file(s)"
-				CommandLine="copy /Y &quot;..\pango\pango-enum-types.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango\pango-enum-types.h&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\module-defs-lang.c.win32-msvc&quot; &quot;..\pango\module-defs-lang.c&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\module-defs.h.win32&quot; &quot;..\pango\module-defs.h&quot;&#x0D;&#x0A;cd ..&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;config.h&quot;&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\config.h&quot;&#x0D;&#x0A;"
+				CommandLine="copy /Y &quot;..\pango\pango-enum-types.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango\pango-enum-types.h&quot;&#x0D;&#x0A;cd ..&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;config.h&quot;&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\config.h&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -211,7 +211,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Prepare enumtypes and configuration file(s)"
-				CommandLine="mkdir &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot; 2&gt; NUL&#x0D;&#x0A;perl $(GlibBuildRootFolder)/gobject/glib-mkenums --template ../pango/pango-enum-types.h.template ../pango/pango.h ../pango/pango-attributes.h  ../pango/pango-bidi-type.h ../pango/pango-break.h ../pango/pango-context.h ../pango/pango-coverage.h ../pango/pango-engine.h ../pango/pango-font.h ../pango/pango-fontmap.h ../pango/pango-fontset.h ../pango/pango-glyph.h ../pango/pango-glyph-item.h ../pango/pango-gravity.h ../pango/pango-item.h ../pango/pango-language.h ../pango/pango-layout.h ../pango/pango-matrix.h ../pango/pango-modules.h ../pango/pango-renderer.h ../pango/pango-script.h ../pango/pango-tabs.h ../pango/pango-types.h ../pango/pango-utils.h &gt; ../pango/pango-enum-types.h&#x0D;&#x0A;perl $(GlibBuildRootFolder)/gobject/glib-mkenums --template ../pango/pango-enum-types.c.template ../pango/pango.h ../pango/pango-attributes.h  ../pango/pango-bidi-type.h ../pango/pango-break.h ../pango/pango-context.h ../pango/pango-coverage.h ../pango/pango-engine.h ../pango/pango-font.h ../pango/pango-fontmap.h ../pango/pango-fontset.h ../pango/pango-glyph.h ../pango/pango-glyph-item.h ../pango/pango-gravity.h ../pango/pango-item.h ../pango/pango-language.h ../pango/pango-layout.h ../pango/pango-matrix.h ../pango/pango-modules.h ../pango/pango-renderer.h ../pango/pango-script.h ../pango/pango-tabs.h ../pango/pango-types.h ../pango/pango-utils.h &gt; ../pango/pango-enum-types.c&#x0D;&#x0A;copy /Y &quot;..\pango\pango-enum-types.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango\pango-enum-types.h&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\module-defs-lang.c.win32-msvc&quot; &quot;..\pango\module-defs-lang.c&quot;&#x0D;&#x0A;copy /Y &quot;..\pango\module-defs.h.win32&quot; &quot;..\pango\module-defs.h&quot;&#x0D;&#x0A;cd ..&#x0D;&#x0A;perl win32-fixup.pl&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;config.h&quot;&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\config.h&quot;&#x0D;&#x0A;"
+				CommandLine="mkdir &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango&quot; 2&gt; NUL&#x0D;&#x0A;perl $(GlibBuildRootFolder)/gobject/glib-mkenums --template ../pango/pango-enum-types.h.template ../pango/pango.h ../pango/pango-attributes.h  ../pango/pango-bidi-type.h ../pango/pango-break.h ../pango/pango-context.h ../pango/pango-coverage.h ../pango/pango-engine.h ../pango/pango-font.h ../pango/pango-fontmap.h ../pango/pango-fontset.h ../pango/pango-glyph.h ../pango/pango-glyph-item.h ../pango/pango-gravity.h ../pango/pango-item.h ../pango/pango-language.h ../pango/pango-layout.h ../pango/pango-matrix.h ../pango/pango-modules.h ../pango/pango-renderer.h ../pango/pango-script.h ../pango/pango-tabs.h ../pango/pango-types.h ../pango/pango-utils.h &gt; ../pango/pango-enum-types.h&#x0D;&#x0A;perl $(GlibBuildRootFolder)/gobject/glib-mkenums --template ../pango/pango-enum-types.c.template ../pango/pango.h ../pango/pango-attributes.h  ../pango/pango-bidi-type.h ../pango/pango-break.h ../pango/pango-context.h ../pango/pango-coverage.h ../pango/pango-engine.h ../pango/pango-font.h ../pango/pango-fontmap.h ../pango/pango-fontset.h ../pango/pango-glyph.h ../pango/pango-glyph-item.h ../pango/pango-gravity.h ../pango/pango-item.h ../pango/pango-language.h ../pango/pango-layout.h ../pango/pango-matrix.h ../pango/pango-modules.h ../pango/pango-renderer.h ../pango/pango-script.h ../pango/pango-tabs.h ../pango/pango-types.h ../pango/pango-utils.h &gt; ../pango/pango-enum-types.c&#x0D;&#x0A;copy /Y &quot;..\pango\pango-enum-types.h&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango\pango-enum-types.h&quot;&#x0D;&#x0A;cd ..&#x0D;&#x0A;perl win32-fixup.pl&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;config.h&quot;&#x0D;&#x0A;copy /Y &quot;config.h.win32&quot; &quot;$(GenericIncludeFolder)\pango-$(PangoApiVersion)\config.h&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -315,34 +315,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\pango\module-defs-lang.c"
-				>
-				<FileConfiguration
-					Name="Debug 32|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="PANGO_MODULE_PREFIX"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release 32|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="PANGO_MODULE_PREFIX"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release 32 with Debugging Capability|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="PANGO_MODULE_PREFIX"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="..\pango\modules.c"
 				>
 			</File>
@@ -438,64 +410,24 @@
 				Name="Arabic-lang"
 				>
 				<File
-					RelativePath="..\modules\arabic\arabic-lang.c"
+					RelativePath="..\pango\break-arabic.c"
 					>
-					<FileConfiguration
-						Name="Debug 32|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_arabic_lang"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release 32|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_arabic_lang"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release 32 with Debugging Capability|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_arabic_lang"
-						/>
-					</FileConfiguration>
 				</File>
 			</Filter>
 			<Filter
 				Name="Indic-lang"
 				>
 				<File
-					RelativePath="..\modules\indic\indic-lang.c"
+					RelativePath="..\pango\break-indic.c"
 					>
-					<FileConfiguration
-						Name="Debug 32|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_indic_lang"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release 32|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_indic_lang"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release 32 with Debugging Capability|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							PreprocessorDefinitions="PANGO_MODULE_PREFIX=_pango_indic_lang"
-						/>
-					</FileConfiguration>
+				</File>
+			</Filter>
+			<Filter
+				Name="Thai-lang"
+				>
+				<File
+					RelativePath="..\pango\break-thai.c"
+					>
 				</File>
 			</Filter>
 		</Filter>
@@ -513,14 +445,6 @@
 			</File>
 			<File
 				RelativePath="..\pango\mini-fribidi\fribidi_types.h"
-				>
-			</File>
-			<File
-				RelativePath="..\pango\module-defs.h"
-				>
-			</File>
-			<File
-				RelativePath="..\pango\modules.h"
 				>
 			</File>
 			<File

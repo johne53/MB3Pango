@@ -26,8 +26,8 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Create &apos;module-defs-win32&apos;"
-				CommandLine="copy /Y &quot;..\pango\module-defs-win32.c.win32-msvc&quot; &quot;..\pango\module-defs-win32.c&quot;&#x0D;&#x0A;"
+				Description=""
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -120,8 +120,8 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Create &apos;module-defs-win32&apos;"
-				CommandLine="copy /Y &quot;..\pango\module-defs-win32.c.win32-msvc&quot; &quot;..\pango\module-defs-win32.c&quot;&#x0D;&#x0A;"
+				Description=""
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -211,8 +211,8 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Create &apos;module-defs-win32&apos;"
-				CommandLine="copy /Y &quot;..\pango\module-defs-win32.c.win32-msvc&quot; &quot;..\pango\module-defs-win32.c&quot;&#x0D;&#x0A;"
+				Description=""
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -300,10 +300,6 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;for;f90"
 			>
 			<File
-				RelativePath="..\pango\module-defs-win32.c"
-				>
-			</File>
-			<File
 				RelativePath="..\pango\pangowin32-fontcache.c"
 				>
 			</File>
@@ -312,17 +308,13 @@
 				>
 			</File>
 			<File
+				RelativePath="..\pango\pangowin32-shape.c"
+				>
+			</File>
+			<File
 				RelativePath="..\pango\pangowin32.c"
 				>
 			</File>
-			<Filter
-				Name="Basic-win32"
-				>
-				<File
-					RelativePath="..\modules\basic\basic-win32.c"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
