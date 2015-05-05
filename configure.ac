@@ -208,7 +208,7 @@ AM_CONDITIONAL(CROSS_COMPILING, [test $cross_compiling = yes])
 # Checks for HarfBuzz
 #
 have_harfbuzz=false
-PKG_CHECK_MODULES(HARFBUZZ, harfbuzz >= 0.9.9, have_harfbuzz=true, AC_MSG_RESULT([no]))
+PKG_CHECK_MODULES(HARFBUZZ, harfbuzz >= 0.9.9, have_harfbuzz=true, :)
 AM_CONDITIONAL(HAVE_HARFBUZZ, $have_harfbuzz)
 
 #
@@ -216,7 +216,7 @@ AM_CONDITIONAL(HAVE_HARFBUZZ, $have_harfbuzz)
 #
 have_fontconfig=false
 if $have_harfbuzz ; then
-  PKG_CHECK_MODULES(FONTCONFIG, fontconfig >= 2.10.91, have_fontconfig=true, AC_MSG_RESULT([no]))
+  PKG_CHECK_MODULES(FONTCONFIG, fontconfig >= 2.10.91, have_fontconfig=true, :)
 fi
 if $have_fontconfig ; then
   pango_save_libs=$LIBS
@@ -232,13 +232,10 @@ have_freetype=false
 if $have_fontconfig ; then
   # The first version of freetype with a .pc file is 2.1.5.  That's recent
   # enough for all the functions we use I guess.  No version check needed.
-  PKG_CHECK_MODULES(FREETYPE, freetype2, have_freetype=true, AC_MSG_RESULT([no]))
+  PKG_CHECK_MODULES(FREETYPE, freetype2, have_freetype=true, :)
 fi
 if $have_freetype ; then
   AC_DEFINE(HAVE_FREETYPE, 1, [Have FreeType 2 library])
-  # By freetype, we really always mean freetype+fontconfig
-  FREETYPE_CFLAGS="$FREETYPE_CFLAGS $FONTCONFIG_CFLAGS"
-  FREETYPE_LIBS="$FREETYPE_LIBS $FONTCONFIG_LIBS"
 fi
 AM_CONDITIONAL(HAVE_FREETYPE, $have_freetype)
 
@@ -250,7 +247,7 @@ AC_ARG_WITH(xft,
   AS_HELP_STRING([--with-xft], [build xft backend]),
   [], [with_xft=yes])
 if $have_freetype ; then
-  PKG_CHECK_MODULES(XFT, xft >= 2.0.0 xrender, have_xft=true, have_xft=false)
+  PKG_CHECK_MODULES(XFT, xft >= 2.0.0 xrender, have_xft=true, :)
 fi
 if test "x$with_xft" = xyes && $have_xft ; then
   AC_DEFINE(HAVE_XFT, 1, [Have Xft library])
@@ -339,7 +336,7 @@ AC_ARG_WITH(cairo,
 	    AS_HELP_STRING([--without-cairo], [Do not use cairo]),
 	    :, with_cairo=auto)
 AS_IF([test x$with_cairo != xno], [
-  PKG_CHECK_MODULES(CAIRO, cairo >= $cairo_required, have_cairo=true, AC_MSG_RESULT([no]))
+  PKG_CHECK_MODULES(CAIRO, cairo >= $cairo_required, have_cairo=true, :)
 ])
 
 if $have_cairo ; then
@@ -415,6 +412,15 @@ if $have_cairo ; then
 
   LIBS=$pango_save_libs
   LDFLAGS=$pango_save_ldflags
+
+  PKGCONFIG_CAIRO_REQUIRES=
+  if $have_cairo_freetype;  then
+    PKGCONFIG_CAIRO_REQUIRES="$PKGCONFIG_CAIRO_REQUIRES pangoft2"
+  fi
+  if $have_cairo_win32;  then
+    PKGCONFIG_CAIRO_REQUIRES="$PKGCONFIG_CAIRO_REQUIRES pangowin32"
+  fi
+  AC_SUBST(PKGCONFIG_CAIRO_REQUIRES)
 fi
 
 AM_CONDITIONAL(HAVE_CAIRO, $have_cairo)
@@ -454,7 +460,8 @@ AC_SUBST(GLIB_MKENUMS)
 # Checks for LibThai
 #
 LIBTHAI_REQUIRED_VERSION=0.1.9
-PKG_CHECK_MODULES(LIBTHAI, libthai >= $LIBTHAI_REQUIRED_VERSION, have_libthai=true, have_libthai=false)
+have_libthai=false
+PKG_CHECK_MODULES(LIBTHAI, libthai >= $LIBTHAI_REQUIRED_VERSION, have_libthai=true, :)
 if $have_libthai; then
 	AC_DEFINE(HAVE_LIBTHAI, 1, [Whether libthai is available])
 fi
@@ -548,54 +555,6 @@ AC_ARG_ENABLE(installed_tests,
               [enable_installed_tests=no])
 AM_CONDITIONAL(BUILDOPT_INSTALL_TESTS, test x$enable_installed_tests = xyes)
 
-
-dnl ******************************************************
-dnl * See whether to include shared library dependencies *
-dnl ******************************************************
-
-AC_ARG_ENABLE(explicit-deps, 
-              AC_HELP_STRING([--enable-explicit-deps=@<:@no/auto/yes@:>@],
-                             [use explicit dependencies in .pc files @<:@default=auto@:>@]),
-              enable_explicit_deps="$enableval", 
-              enable_explicit_deps=auto)
-
-AC_MSG_CHECKING([Whether to write dependencies into .pc files])
-case $enable_explicit_deps in
-  auto)
-    export SED
-    deplibs_check_method=`(./libtool --config; echo 'eval echo \"$deplibs_check_method\"') | sh`
-    if test "x$deplibs_check_method" '!=' xpass_all || test "x$enable_static" = xyes ; then
-      enable_explicit_deps=yes  
-    else
-      enable_explicit_deps=no  
-    fi
-  ;;
-  yes|no) 
-  ;;
-  *) AC_MSG_ERROR([Value given to --enable-explicit-deps must be one of yes, no or auto])
-  ;;
-esac
-AC_MSG_RESULT($enable_explicit_deps)
-
-PKGCONFIG_MATH_LIBS=
-PKGCONFIG_CAIRO_REQUIRES=
-
-if test $enable_explicit_deps = yes ; then
-  PKGCONFIG_MATH_LIBS=-lm
-
-  X_LIBS="$X_LIBS $X_EXTRA_LIBS"
-
-  if $have_cairo_freetype;  then
-    PKGCONFIG_CAIRO_REQUIRES="$PKGCONFIG_CAIRO_REQUIRES pangoft2"
-  fi
-  if $have_cairo_win32;  then
-    PKGCONFIG_CAIRO_REQUIRES="$PKGCONFIG_CAIRO_REQUIRES pangowin32"
-  fi
-fi
-
-AC_SUBST(PKGCONFIG_MATH_LIBS)
-AC_SUBST(PKGCONFIG_CAIRO_REQUIRES)
-AM_CONDITIONAL(DISABLE_EXPLICIT_DEPS, test $enable_explicit_deps = no)
 
 AC_HEADER_DIRENT
 AC_CHECK_HEADERS(unistd.h)

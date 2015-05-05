@@ -197,6 +197,15 @@ GType pango_fc_font_map_get_type (void) G_GNUC_CONST;
 
 void           pango_fc_font_map_cache_clear    (PangoFcFontMap *fcfontmap);
 
+void
+pango_fc_font_map_config_changed (PangoFcFontMap *fcfontmap);
+
+void
+pango_fc_font_map_set_config (PangoFcFontMap *fcfontmap,
+			      FcConfig       *fcconfig);
+FcConfig *
+pango_fc_font_map_get_config (PangoFcFontMap *fcfontmap);
+
 /**
  * PangoFcDecoderFindFunc:
  * @pattern: a fully resolved #FcPattern specifying the font on the system

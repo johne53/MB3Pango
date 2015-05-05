@@ -27,6 +27,7 @@ INCLUDES =						\
 	$(CAIRO_CFLAGS)					\
 	$(HARFBUZZ_CFLAGS)				\
 	$(FREETYPE_CFLAGS)				\
+	$(FONTCONFIG_CFLAGS)				\
 	$(LIBTHAI_CFLAGS)					\
 	$(X_CFLAGS)
 
@@ -190,6 +191,7 @@ libpangoft2_1_0_la_LIBADD =			\
 	$(GLIB_LIBS)				\
 	$(HARFBUZZ_LIBS)			\
 	$(FREETYPE_LIBS)			\
+	$(FONTCONFIG_LIBS)			\
 	$(libm)
 libpangoft2_1_0_la_DEPENDENCIES =		\
 	libpango-$(PANGO_API_VERSION).la
@@ -244,7 +246,6 @@ libpangoxft_1_0_la_LIBADD =			\
 	libpangoft2-$(PANGO_API_VERSION).la	\
 	libpango-$(PANGO_API_VERSION).la	\
 	$(GLIB_LIBS)				\
-	$(X_LIBS)				\
 	$(XFT_LIBS)				\
 	$(FREETYPE_LIBS)			\
 	$(libm)
@@ -498,13 +499,6 @@ dist-hook: \
 	$(top_builddir)/build/win32/vs9/pangoft2.vcproj		\
 	$(top_builddir)/build/win32/vs9/pangocairo.vcproj	\
 	$(top_builddir)/build/win32/vs9/pango.headers
-
-install-exec-hook:
-if DISABLE_EXPLICIT_DEPS
-	-for i in libpangoft2-$(PANGO_API_VERSION).la libpangoxft-$(PANGO_API_VERSION).la libpangowin32-$(PANGO_API_VERSION).la; do \
-	  test -f $(DESTDIR)$(libdir)/$$i && $(SHELL) $(top_srcdir)/sanitize-la.sh $(DESTDIR)$(libdir)/$$i ; \
-	done
-endif
 
 TESTS = check.defs
 
