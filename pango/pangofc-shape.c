@@ -35,17 +35,6 @@ static hb_buffer_t *cached_buffer = NULL; /* MT-safe */
 G_LOCK_DEFINE_STATIC (cached_buffer);
 
 static hb_buffer_t *
-create_buffer (void)
-{
-  hb_buffer_t *buffer;
-
-  buffer = hb_buffer_create ();
-  hb_buffer_set_unicode_funcs (buffer, hb_glib_get_unicode_funcs ());
-
-  return buffer;
-}
-
-static hb_buffer_t *
 acquire_buffer (gboolean *free_buffer)
 {
   hb_buffer_t *buffer;
@@ -53,14 +42,14 @@ acquire_buffer (gboolean *free_buffer)
   if (G_LIKELY (G_TRYLOCK (cached_buffer)))
     {
       if (G_UNLIKELY (!cached_buffer))
-	cached_buffer = create_buffer ();
+	cached_buffer = hb_buffer_create ();
 
       buffer = cached_buffer;
       *free_buffer = FALSE;
     }
   else
     {
-      buffer = create_buffer ();
+      buffer = hb_buffer_create ();
       *free_buffer = TRUE;
     }
 
@@ -375,6 +364,45 @@ _pango_fc_shape (PangoFont           *font,
 	  if (ret)
 	    num_features++;
 	}
+    }
+
+  if (analysis->extra_attrs)
+    {
+      GSList *tmp_attrs;
+
+      for (tmp_attrs = analysis->extra_attrs; tmp_attrs && num_features < G_N_ELEMENTS (features); tmp_attrs = tmp_attrs->next)
+       {
+	 if (((PangoAttribute *) tmp_attrs->data)->klass->type == PANGO_ATTR_FONT_FEATURES)
+	   {
+	     const PangoAttrFontFeatures *fattr = (const PangoAttrFontFeatures *) tmp_attrs->data;
+	      const gchar *feat;
+	      const gchar *end;
+	      int len;
+
+	      feat = fattr->features;
+
+	      while (feat != NULL && num_features < G_N_ELEMENTS (features))
+		{
+		  end = strchr (feat, ',');
+		  if (end)
+		    len = end - feat;
+		  else
+		    len = -1;
+
+		  if (hb_feature_from_string (feat, len, &features[num_features]))
+		  {
+		    num_features++;
+		    features[num_features].start = 0;
+		    features[num_features].end = -1;
+		  }
+
+		  if (end == NULL)
+		    break;
+
+		  feat = end + 1;
+		}
+	   }
+       }
     }
 
   hb_shape (hb_font, hb_buffer, features, num_features);
