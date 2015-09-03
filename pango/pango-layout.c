@@ -5170,7 +5170,6 @@ justify_clusters (PangoLayoutLine *line,
   const gchar *text = line->layout->text;
   const PangoLogAttr *log_attrs = line->layout->log_attrs;
 
-  int offset;
   int total_remaining_width, total_gaps = 0;
   int added_so_far, gaps_so_far;
   gboolean is_hinted;
@@ -5189,79 +5188,128 @@ justify_clusters (PangoLayoutLine *line,
 
   for (mode = MEASURE; mode <= ADJUST; mode++)
     {
+      gboolean leftedge = TRUE;
+      PangoGlyphString *rightmost_glyphs = NULL;
+      int rightmost_space;
+      int residual = 0;
+
       added_so_far = 0;
       gaps_so_far = 0;
 
-      offset = state->line_start_offset;
       for (run_iter = line->runs; run_iter; run_iter = run_iter->next)
 	{
 	  PangoLayoutRun *run = run_iter->data;
 	  PangoGlyphString *glyphs = run->glyphs;
-	  gboolean is_first_gap = TRUE;
 	  PangoGlyphItemIter cluster_iter;
 	  gboolean have_cluster;
+	  int dir;
+	  int offset;
 
-	  for (have_cluster = pango_glyph_item_iter_init_start (&cluster_iter, run, text);
+	  dir = run->item->analysis.level % 2 == 0 ? +1 : -1;
+
+	  /* We need character offset of the start of the run.  We don't have this.
+	   * Compute by counting from the beginning of the line.  The naming is
+	   * confusing.  Note that:
+	   *
+	   * run->item->offset        is byte offset of start of run in layout->text.
+	   * state->line_start_index  is byte offset of start of line in layout->text.
+	   * state->line_start_offset is character offset of start of line in layout->text.
+	   */
+	  g_assert (run->item->offset >= state->line_start_index);
+	  offset = state->line_start_offset
+		 + pango_utf8_strlen (text + state->line_start_index,
+				      run->item->offset - state->line_start_index);
+
+	  for (have_cluster = dir > 0 ?
+		 pango_glyph_item_iter_init_start (&cluster_iter, run, text) :
+		 pango_glyph_item_iter_init_end   (&cluster_iter, run, text);
 	       have_cluster;
-	       have_cluster = pango_glyph_item_iter_next_cluster (&cluster_iter))
+	       have_cluster = dir > 0 ?
+	         pango_glyph_item_iter_next_cluster (&cluster_iter) :
+	         pango_glyph_item_iter_prev_cluster (&cluster_iter))
 	    {
 	      int i;
-	      int dir;
+	      int width = 0;
 
 	      /* don't expand in the middle of graphemes */
 	      if (!log_attrs[offset + cluster_iter.start_char].is_cursor_position)
 		continue;
 
-	      dir = (cluster_iter.start_glyph < cluster_iter.end_glyph) ? 1 : -1;
 	      for (i = cluster_iter.start_glyph; i != cluster_iter.end_glyph; i += dir)
+		width += glyphs->glyphs[i].geometry.width;
+
+	      /* also don't expand zero-width clusters. */
+	      if (width == 0)
+		continue;
+
+	      gaps_so_far++;
+
+	      if (mode == ADJUST)
 		{
-		  /* also don't expand zero-width spaces at the end of runs */
-		  if (glyphs->glyphs[i].geometry.width == 0)
-		    {
-		      if (i == glyphs->num_glyphs -1)
-			continue;
+		  int leftmost, rightmost;
+		  int adjustment, space_left, space_right;
 
-		      if (i == 0 && glyphs->num_glyphs > 1 && glyphs->glyphs[i+1].attr.is_cluster_start)
-			continue;
-		    }
+		  adjustment = total_remaining_width / total_gaps + residual;
+		  if (is_hinted)
+		  {
+		    int old_adjustment = adjustment;
+		    adjustment = PANGO_UNITS_ROUND (adjustment);
+		    residual = old_adjustment - adjustment;
+		  }
+		  /* distribute to before/after */
+		  distribute_letter_spacing (adjustment, &space_left, &space_right);
 
-		  if (is_first_gap)
-		    {
-		      is_first_gap = FALSE;
-		      continue;
-		    }
+		  if (cluster_iter.start_glyph < cluster_iter.end_glyph)
+		  {
+		    /* LTR */
+		    leftmost  = cluster_iter.start_glyph;
+		    rightmost = cluster_iter.end_glyph - 1;
+		  }
+		  else
+		  {
+		    /* RTL */
+		    leftmost  = cluster_iter.end_glyph + 1;
+		    rightmost = cluster_iter.start_glyph;
+		  }
+		  /* Don't add to left-side of left-most glyph of left-most non-zero run. */
+		  if (leftedge)
+		    leftedge = FALSE;
+		  else
+		  {
+		    glyphs->glyphs[leftmost].geometry.width    += space_left ;
+		    glyphs->glyphs[leftmost].geometry.x_offset += space_left ;
+		    added_so_far += space_left;
+		  }
+		  /* Don't add to right-side of right-most glyph of right-most non-zero run. */
+		  {
+		    /* Save so we can undo later. */
+		    rightmost_glyphs = glyphs;
+		    rightmost_space = space_right;
 
-		  gaps_so_far++;
-
-		  if (mode == ADJUST)
-		    {
-		      int adjustment, space_left, space_right;
-
-		      adjustment = (gaps_so_far * total_remaining_width) / total_gaps - added_so_far;
-		      if (is_hinted)
-			adjustment = PANGO_UNITS_ROUND (adjustment);
-		      /* distribute to before/after */
-		      distribute_letter_spacing (adjustment, &space_left, &space_right);
-
-		      glyphs->glyphs[i-1].geometry.width    += space_left ;
-		      glyphs->glyphs[i  ].geometry.width    += space_right;
-		      glyphs->glyphs[i  ].geometry.x_offset += space_right;
-
-		      added_so_far += adjustment;
-		    }
+		    glyphs->glyphs[rightmost].geometry.width  += space_right;
+		    added_so_far += space_right;
+		  }
 		}
 	    }
 	}
 
       if (mode == MEASURE)
 	{
-	  total_gaps = gaps_so_far;
+	  total_gaps = gaps_so_far - 1;
 
 	  if (total_gaps == 0)
 	    {
 	      /* a single cluster, can't really justify it */
 	      return;
 	    }
+	}
+      else /* mode == ADJUST */
+        {
+	  if (rightmost_glyphs)
+	   {
+	     rightmost_glyphs->glyphs[rightmost_glyphs->num_glyphs - 1].geometry.width -= rightmost_space;
+	     added_so_far -= rightmost_space;
+	   }
 	}
     }
 
@@ -5275,7 +5323,6 @@ justify_words (PangoLayoutLine *line,
   const gchar *text = line->layout->text;
   const PangoLogAttr *log_attrs = line->layout->log_attrs;
 
-  int offset;
   int total_remaining_width, total_space_width = 0;
   int added_so_far, spaces_so_far;
   gboolean is_hinted;
@@ -5297,13 +5344,26 @@ justify_words (PangoLayoutLine *line,
       added_so_far = 0;
       spaces_so_far = 0;
 
-      offset = state->line_start_offset;
       for (run_iter = line->runs; run_iter; run_iter = run_iter->next)
 	{
 	  PangoLayoutRun *run = run_iter->data;
 	  PangoGlyphString *glyphs = run->glyphs;
 	  PangoGlyphItemIter cluster_iter;
 	  gboolean have_cluster;
+	  int offset;
+
+	  /* We need character offset of the start of the run.  We don't have this.
+	   * Compute by counting from the beginning of the line.  The naming is
+	   * confusing.  Note that:
+	   *
+	   * run->item->offset        is byte offset of start of run in layout->text.
+	   * state->line_start_index  is byte offset of start of line in layout->text.
+	   * state->line_start_offset is character offset of start of line in layout->text.
+	   */
+	  g_assert (run->item->offset >= state->line_start_index);
+	  offset = state->line_start_offset
+		 + pango_utf8_strlen (text + state->line_start_index,
+				      run->item->offset - state->line_start_index);
 
 	  for (have_cluster = pango_glyph_item_iter_init_start (&cluster_iter, run, text);
 	       have_cluster;
@@ -5338,8 +5398,6 @@ justify_words (PangoLayoutLine *line,
 		    }
 		}
 	    }
-
-	  offset += glyphs->num_glyphs;
 	}
 
       if (mode == MEASURE)
