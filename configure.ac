@@ -22,7 +22,7 @@ dnl
 dnl The triplet
 m4_define([pango_version_major], [1])
 m4_define([pango_version_minor], [37])
-m4_define([pango_version_micro], [4])
+m4_define([pango_version_micro], [5])
 
 m4_define([pango_version],
           [pango_version_major.pango_version_minor.pango_version_micro])
@@ -616,6 +616,7 @@ build/win32/vs9/Makefile
 build/win32/vs10/Makefile
 build/win32/vs11/Makefile
 build/win32/vs12/Makefile
+build/win32/vs14/Makefile
 pango.pc
 pangowin32.pc
 pangoft2.pc
