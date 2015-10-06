@@ -21,8 +21,8 @@ dnl
 
 dnl The triplet
 m4_define([pango_version_major], [1])
-m4_define([pango_version_minor], [37])
-m4_define([pango_version_micro], [5])
+m4_define([pango_version_minor], [38])
+m4_define([pango_version_micro], [0])
 
 m4_define([pango_version],
           [pango_version_major.pango_version_minor.pango_version_micro])
@@ -208,7 +208,7 @@ AM_CONDITIONAL(CROSS_COMPILING, [test $cross_compiling = yes])
 # Checks for HarfBuzz
 #
 have_harfbuzz=false
-PKG_CHECK_MODULES(HARFBUZZ, harfbuzz >= 0.9.9, have_harfbuzz=true, :)
+PKG_CHECK_MODULES(HARFBUZZ, harfbuzz >= 0.9.30, have_harfbuzz=true, :)
 AM_CONDITIONAL(HAVE_HARFBUZZ, $have_harfbuzz)
 
 #
