@@ -21,7 +21,7 @@ dnl
 
 dnl The triplet
 m4_define([pango_version_major], [1])
-m4_define([pango_version_minor], [39])
+m4_define([pango_version_minor], [40])
 m4_define([pango_version_micro], [0])
 
 m4_define([pango_version],
@@ -500,7 +500,7 @@ AC_ARG_ENABLE(doc-cross-references,
 
 if test "x$enable_doc_cross_references" != xno ; then
 	GLIB_PREFIX="`$PKG_CONFIG --variable=prefix glib-2.0`"
-	CAIRO_PREFIX="`pkg-config --variable=prefix cairo`"
+	CAIRO_PREFIX="`$PKG_CONFIG --variable=prefix cairo`"
 	AC_SUBST(GLIB_PREFIX)
 	AC_SUBST(CAIRO_PREFIX)
 fi
