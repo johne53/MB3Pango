@@ -6,9 +6,7 @@
 #define HAVE_CAIRO 1
 
 /* Whether Cairo can use FreeType for fonts */
-#ifndef PANGO_VISUALC_NO_FC
-#define HAVE_CAIRO_FREETYPE 1
-#endif
+/* HAVE_CAIRO_FREETYPE */
 
 /* Whether Cairo has PDF support */
 #define HAVE_CAIRO_PDF 1
@@ -146,6 +144,13 @@
 
 /* Version number of package */
 #define VERSION "@PANGO_VERSION@"
+
+/* defines how to decorate public symbols while building */
+#ifdef _MSC_VER
+#define _PANGO_EXTERN __declspec(dllexport) extern
+#else
+#define _PANGO_EXTERN __attribute__((visibility("default"))) __declspec(dllexport) extern
+#endif
 
 /* These added by JE - 10-10-2010. */
 #ifndef G_LOG_DOMAIN
