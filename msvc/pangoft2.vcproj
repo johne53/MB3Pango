@@ -74,7 +74,7 @@
 				AdditionalDependencies="iconv.lib freetype32-2.lib $(DllPrefix)harfbuzz.lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)pango32$(DllSuffix).lib $(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)fontconfig.lib $(DllPrefix)xml2.lib zlib1.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix).dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
-				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
+				ModuleDefinitionFile=""
 				SubSystem="2"
 			/>
 			<Tool
@@ -165,7 +165,7 @@
 				AdditionalDependencies="iconvRDC.lib freetype32-2RDC.lib $(DllPrefix)harfbuzzRDC.lib $(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)pango32$(DllSuffix)RDC.lib $(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)fontconfigRDC.lib $(DllPrefix)xml2RDC.lib zlib1RDC.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix)RDC.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
-				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 			/>
@@ -259,7 +259,7 @@
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix)D.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;;&quot;$(GenericWin32LibraryFolder)&quot;;&quot;$(GenericLibraryFolder)&quot;"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
-				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 			/>

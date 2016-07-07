@@ -74,7 +74,7 @@
 				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)gmodule32$(GlibDllSuffix)D.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)mini_fribidi$(DllSuffix)D.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix)D.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;"
-				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 			/>
@@ -166,7 +166,7 @@
 				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)gmodule32$(GlibDllSuffix).lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)mini_fribidi$(DllSuffix).lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix).dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;"
-				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
+				ModuleDefinitionFile=""
 				SubSystem="2"
 			/>
 			<Tool
@@ -257,7 +257,7 @@
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix)RDC.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;"
 				IgnoreDefaultLibraryNames=""
-				ModuleDefinitionFile="$(ProjectDir)\..\pango\$(ProjectName).def"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 			/>
