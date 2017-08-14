@@ -1,5 +1,5 @@
 project('pango', 'c', 'cpp',
-        version: '1.40.6',
+        version: '1.40.9',
         license: 'LGPLv2.1+',
         default_options: [
           'buildtype=debugoptimized',
@@ -8,7 +8,7 @@ project('pango', 'c', 'cpp',
         ],
         meson_version : '>= 0.40.1')
 
-add_project_arguments([ '-D_POSIX_C_SOURCE', '-D_POSIX_THREAD_SAFE_FUNCTIONS', '-D_GNU_SOURCE', ], language: 'c')
+add_project_arguments([ '-D_POSIX_C_SOURCE=200809L', '-D_POSIX_THREAD_SAFE_FUNCTIONS', '-D_GNU_SOURCE', ], language: 'c')
 
 pango_prefix = get_option('prefix')
 pango_libdir = join_paths(pango_prefix, get_option('libdir'))
@@ -52,25 +52,8 @@ common_ldflags = []
 if cc.get_id() == 'msvc'
   # Compiler options taken from msvc_recommended_pragmas.h
   # in GLib, based on _Win32_Programming_ by Rector and Newcomer
-  test_cflags = [
-    '-we4002', # too many actual parameters for macro
-    '-we4003', # not enough actual parameters for macro
-    '-w14010', # single-line comment contains line-continuation character
-    '-we4013', # 'function' undefined; assuming extern returning int
-    '-w14016', # no function return type; using int as default
-    '-we4020', # too many actual parameters
-    '-we4021', # too few actual parameters
-    '-we4027', # function declared without formal parameter list
-    '-we4029', # declared formal parameter list different from definition
-    '-we4033', # 'function' must return a value
-    '-we4035', # 'function' : no return value
-    '-we4045', # array bounds overflow
-    '-we4047', # different levels of indirection
-    '-we4049', # terminating line number emission
-    '-we4053', # an expression of type void was used as an operand
-    '-we4071', # no function prototype given
-    '-we4819', # the file contains a character that cannot be represented in the current code page
-  ]
+  test_cflags = []
+  add_project_arguments([ '-FImsvc_recommended_pragmas.h' ], language: 'c')
   test_c_only_flags = []
 elif cc.get_id() == 'gcc' or cc.get_id() == 'clang'
   test_c_only_flags = [
