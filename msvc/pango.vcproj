@@ -339,6 +339,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\pango\pango-emoji.c"
+				>
+			</File>
+			<File
 				RelativePath="..\pango\pango-engine.c"
 				>
 			</File>
@@ -469,6 +473,14 @@
 			</File>
 			<File
 				RelativePath="..\pango\pango-coverage.h"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\pango-emoji-private.h"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\pango-emoji-table.h"
 				>
 			</File>
 			<File
