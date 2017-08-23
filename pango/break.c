@@ -496,6 +496,7 @@ pango_default_break (const gchar   *text,
     GB_Other,
     GB_ControlCRLF,
     GB_Extend,
+    GB_ZWJ,
     GB_Prepend,
     GB_SpacingMark,
     GB_InHangulSyllable, /* Handles all of L, V, T, LV, LVT rules */
@@ -673,22 +674,27 @@ pango_default_break (const gchar   *text,
 	switch ((int) type)
 	  {
 	  case G_UNICODE_FORMAT:
-	    if (wc == 0x200C || wc == 0x200D)
+	    if (G_UNLIKELY (wc == 0x200C))
 	      {
-		GB_type = GB_Extend; /* U+200C and U+200D are Other_Grapheme_Extend */
+		GB_type = GB_Extend;
 		break;
 	      }
-        if (G_UNLIKELY((wc >= 0x600 && wc <= 0x605) ||
-                       wc == 0x6DD ||
-                       wc == 0x70F ||
-                       wc == 0x8E2 ||
-                       wc == 0xD4E ||
-                       wc == 0x110BD ||
-                       (wc >= 0x111C2 && wc <= 0x111C3)))
-          {
-              GB_type = GB_Prepend;
-              break;
-          }
+	    if (G_UNLIKELY (wc == 0x200D))
+	      {
+		GB_type = GB_ZWJ;
+		break;
+	      }
+            if (G_UNLIKELY((wc >= 0x600 && wc <= 0x605) ||
+                            wc == 0x6DD ||
+                            wc == 0x70F ||
+                            wc == 0x8E2 ||
+                            wc == 0xD4E ||
+                            wc == 0x110BD ||
+                            (wc >= 0x111C2 && wc <= 0x111C3)))
+              {
+                GB_type = GB_Prepend;
+                break;
+              }
 	    /* fall through */
 	  case G_UNICODE_CONTROL:
 	  case G_UNICODE_LINE_SEPARATOR:
@@ -734,99 +740,107 @@ pango_default_break (const gchar   *text,
 	    GB_type = GB_Extend; /* Grapheme_Extend */
 	    break;
 
-      case G_UNICODE_OTHER_SYMBOL:
+          case G_UNICODE_OTHER_SYMBOL:
+            if (G_UNLIKELY(wc == 0x261D ||
+                           wc == 0x26F9 ||
+                           (wc >= 0x270A && wc <= 0x270D) ||
+                           wc == 0x1F385 ||
+                           (wc >= 0x1F3C2 && wc <= 0x1F3C4) ||
+                           wc == 0x1F3C7 ||
+                           (wc >= 0x1F3CA && wc <= 0x1F3CC) ||
+                           (wc >= 0x1F442 && wc <= 0x1F443) ||
+                           (wc >= 0x1F446 && wc <= 0x1F450) ||
+                           wc == 0x1F46E ||
+                           (wc >= 0x1F470 && wc <= 0x1F478) ||
+                           wc == 0x1F47C ||
+                           (wc >= 0x1F481 && wc <= 0x1F483) ||
+                           (wc >= 0x1F485 && wc <= 0x1F487) ||
+                           wc == 0x1F4AA ||
+                           (wc >= 0x1F574 && wc <= 0x1F575) ||
+                           wc == 0x1F57A ||
+                           wc == 0x1F590 ||
+                           (wc >= 0x1F595 && wc <= 0x1F596) ||
+                           (wc >= 0x1F645 && wc <= 0x1F647) ||
+                           (wc >= 0x1F64B && wc <= 0x1F64F) ||
+                           wc == 0x1F6A3 ||
+                           (wc >= 0x1F6B4 && wc <= 0x1F6B6) ||
+                           wc == 0x1F6C0 ||
+                           wc == 0x1F6CC ||
+                           (wc >= 0x1F918 && wc <= 0x1F91C) ||
+                           (wc >= 0x1F91E && wc <= 0x1F91F) ||
+                           wc == 0x1F926 ||
+                           (wc >= 0x1F930 && wc <= 0x1F939) ||
+                           (wc >= 0x1F93D && wc <= 0x1F93E) ||
+                           (wc >= 0x1F9D1 && wc <= 0x1F9DD)))
+              {
+                GB_type = GB_E_Base;
+                break;
+              }
+            if (G_UNLIKELY(wc == 0x2640 ||
+                           wc == 0x2642 ||
+                           (wc >= 0x2695 && wc <= 0x2696) ||
+                           wc == 0x2708 ||
+                           wc == 0x2764 ||
+                           wc == 0x1F308 ||
+                           wc == 0x1F33E ||
+                           wc == 0x1F373 ||
+                           wc == 0x1F393 ||
+                           wc == 0x1F3A4 ||
+                           wc == 0x1F3A8 ||
+                           wc == 0x1F3EB ||
+                           wc == 0x1F3ED ||
+                           wc == 0x1F48B ||
+                           (wc >= 0x1F4BB && wc <= 0x1F4BC) ||
+                           wc == 0x1F527 ||
+                           wc == 0x1F52C ||
+                           wc == 0x1F5E8 ||
+                           wc == 0x1F680 ||
+                           wc == 0x1F692))
+              {
+                GB_type = GB_Glue_After_Zwj;
+                break;
+              }
+            if (G_UNLIKELY(wc >= 0x1F466 && wc <= 0x1F469))
+              {
+                GB_type = GB_E_Base_GAZ;
+                break;
+              }
+            if (G_UNLIKELY(wc >=0x1F1E6 && wc <=0x1F1FF))
+              {
+                if (prev_GB_type == GB_RI_Odd)
+                  GB_type = GB_RI_Even;
+                else if (prev_GB_type == GB_RI_Even)
+                  GB_type = GB_RI_Odd;
+                else
+                  GB_type = GB_RI_Odd;
+                break;
+              }
+            break;
 
-        if (G_UNLIKELY(wc == 0x261D ||
-                       wc == 0x26F9 ||
-                       (wc >= 0x270A && wc <= 0x270D) ||
-                       wc == 0x1F385 ||
-                       (wc >= 0x1F3C2 && wc <= 0x1F3C4) ||
-                       wc == 0x1F3C7 ||
-                       (wc >= 0x1F3CA && wc <= 0x1F3CC) ||
-                       (wc >= 0x1F442 && wc <= 0x1F443) ||
-                       (wc >= 0x1F446 && wc <= 0x1F450) ||
-                       wc == 0x1F46E ||
-                       (wc >= 0x1F470 && wc <= 0x1F478) ||
-                       wc == 0x1F47C ||
-                       (wc >= 0x1F481 && wc <= 0x1F483) ||
-                       (wc >= 0x1F485 && wc <= 0x1F487) ||
-                       wc == 0x1F4AA ||
-                       (wc >= 0x1F574 && wc <= 0x1F575) ||
-                       wc == 0x1F57A ||
-                       wc == 0x1F590 ||
-                       (wc >= 0x1F595 && wc <= 0x1F596) ||
-                       (wc >= 0x1F645 && wc <= 0x1F647) ||
-                       (wc >= 0x1F64B && wc <= 0x1F64F) ||
-                       wc == 0x1F6A3 ||
-                       (wc >= 0x1F6B4 && wc <= 0x1F6B6) ||
-                       wc == 0x1F6C0 ||
-                       wc == 0x1F6CC ||
-                       (wc >= 0x1F918 && wc <= 0x1F91C) ||
-                       (wc >= 0x1F91E && wc <= 0x1F91F) ||
-                       wc == 0x1F926 ||
-                       (wc >= 0x1F930 && wc <= 0x1F939) ||
-                       (wc >= 0x1F93D && wc <= 0x1F93E) ||
-                       (wc >= 0x1F9D1 && wc <= 0x1F9DD)))
-          GB_type = GB_E_Base;
-
-        if (G_UNLIKELY(wc == 0x2640 ||
-                       wc == 0x2642 ||
-                       (wc >= 0x2695 && wc <= 0x2696) ||
-                       wc == 0x2708 ||
-                       wc == 0x2764 ||
-                       wc == 0x1F308 ||
-                       wc == 0x1F33E ||
-                       wc == 0x1F373 ||
-                       wc == 0x1F393 ||
-                       wc == 0x1F3A4 ||
-                       wc == 0x1F3A8 ||
-                       wc == 0x1F3EB ||
-                       wc == 0x1F3ED ||
-                       wc == 0x1F48B ||
-                       (wc >= 0x1F4BB && wc <= 0x1F4BC) ||
-                       wc == 0x1F527 ||
-                       wc == 0x1F52C ||
-                       wc == 0x1F5E8 ||
-                       wc == 0x1F680 ||
-                       wc == 0x1F692))
-          GB_type = GB_Glue_After_Zwj;
-
-        if (G_UNLIKELY(wc >= 0x1F466 && wc <= 0x1F469))
-          GB_type = GB_E_Base_GAZ;
-
-        if (G_UNLIKELY(wc >=0x1F1E6 && wc <=0x1F1FF))
-          {
-            if (prev_GB_type == GB_RI_Odd)
-              GB_type = GB_RI_Even;
-            else if (prev_GB_type == GB_RI_Even)
-              GB_type = GB_RI_Odd;
-            else
-              GB_type = GB_RI_Odd;
-          }
-        break;
-
-    case G_UNICODE_MODIFIER_SYMBOL:
-      if (wc >= 0x1F3FB && wc <= 0x1F3FF)
-        GB_type = GB_E_Modifier;
-      break;
+          case G_UNICODE_MODIFIER_SYMBOL:
+            if (wc >= 0x1F3FB && wc <= 0x1F3FF)
+              GB_type = GB_E_Modifier;
+            break;
 	  }
 
 	/* Grapheme Cluster Boundary Rules */
 
 	/* We apply Rules GB1 and GB2 at the end of the function */
 	if (wc == '\n' && prev_wc == '\r')
-	  is_grapheme_boundary = FALSE; /* Rule GB3 */
+          is_grapheme_boundary = FALSE; /* Rule GB3 */
 	else if (prev_GB_type == GB_ControlCRLF || GB_type == GB_ControlCRLF)
 	  is_grapheme_boundary = TRUE; /* Rules GB4 and GB5 */
 	else if (GB_type == GB_InHangulSyllable)
 	  is_grapheme_boundary = FALSE; /* Rules GB6, GB7, GB8 */
 	else if (GB_type == GB_Extend)
-        {
-      /* Rule GB10 */
-      if (prev_GB_type == GB_E_Base || prev_GB_type == GB_E_Base_GAZ)
-	    GB_type = prev_GB_type;
+          {
+            /* Rule GB10 */
+            if (prev_GB_type == GB_E_Base || prev_GB_type == GB_E_Base_GAZ)
+	      GB_type = prev_GB_type;
+	    is_grapheme_boundary = FALSE; /* Rule GB9 */
+          }
+        else if (GB_type == GB_ZWJ)
 	  is_grapheme_boundary = FALSE; /* Rule GB9 */
-        }
 	else if (GB_type == GB_SpacingMark)
 	  is_grapheme_boundary = FALSE; /* Rule GB9a */
 	else if (prev_GB_type == GB_Prepend)
@@ -834,28 +848,39 @@ pango_default_break (const gchar   *text,
 	/* Rule GB10 */
 	else if (prev_GB_type == GB_E_Base || prev_GB_type == GB_E_Base_GAZ)
 	  {
-        if (GB_type == GB_E_Modifier)
-          is_grapheme_boundary = FALSE;
-        else
-          is_grapheme_boundary = TRUE;
-      }
-	else if (prev_wc == 0x200D &&
-           (GB_type == GB_Glue_After_Zwj || GB_type == GB_E_Base_GAZ))
+            if (GB_type == GB_E_Modifier)
+              is_grapheme_boundary = FALSE;
+            else
+              is_grapheme_boundary = TRUE;
+          }
+	else if (prev_GB_type == GB_ZWJ &&
+                 (GB_type == GB_Glue_After_Zwj || GB_type == GB_E_Base_GAZ))
 	  is_grapheme_boundary = FALSE; /* Rule GB11 */
 	else if (prev_GB_type == GB_RI_Odd && GB_type == GB_RI_Even)
 	  is_grapheme_boundary = FALSE; /* Rule GB12 and GB13 */
 	else
-	  is_grapheme_boundary = TRUE;  /* Rule GB999 */
-
-	prev_GB_type = GB_type;
+	  is_grapheme_boundary = TRUE; /* Rule GB999 */
 
 	attrs[i].is_cursor_position = is_grapheme_boundary;
 	/* If this is a grapheme boundary, we have to decide if backspace
 	 * deletes a character or the whole grapheme cluster */
 	if (is_grapheme_boundary)
-	  attrs[i].backspace_deletes_character = BACKSPACE_DELETES_CHARACTER (base_character);
+          {
+            if (prev_GB_type == GB_E_Base ||
+                prev_GB_type == GB_E_Base_GAZ ||
+                prev_GB_type == GB_Glue_After_Zwj ||
+                prev_GB_type == GB_Extend ||
+                prev_GB_type == GB_E_Modifier ||
+                prev_GB_type == GB_RI_Odd ||
+                prev_GB_type == GB_RI_Even)
+	      attrs[i].backspace_deletes_character = FALSE;
+            else
+	      attrs[i].backspace_deletes_character = BACKSPACE_DELETES_CHARACTER (base_character);
+          }
 	else
 	  attrs[i].backspace_deletes_character = FALSE;
+
+	prev_GB_type = GB_type;
       }
 
       /* ---- UAX#29 Word Boundaries ---- */
