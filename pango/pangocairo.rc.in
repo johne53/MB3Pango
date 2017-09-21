@@ -26,7 +26,7 @@ VS_VERSION_INFO VERSIONINFO
 	VALUE "FileDescription", "PangoCairo for Ardour and Mixbus"
 	VALUE "FileVersion", "@PANGO_VERSION_MAJOR@.@PANGO_VERSION_MINOR@.@PANGO_VERSION_MICRO@.@PANGO_INTERFACE_AGE@"
 	VALUE "InternalName", "pangocairo-@PANGO_API_VERSION@-@PANGO_CURRENT_MINUS_AGE@"
-	VALUE "LegalCopyright", "Copyright © 2010 Red Hat Software."
+	VALUE "LegalCopyright", "Copyright 2010 Red Hat Software."
 	VALUE "OriginalFilename", "pangocairo-@PANGO_API_VERSION@-@PANGO_CURRENT_MINUS_AGE@.dll"
 	VALUE "ProductName", "PangoCairo"
 	VALUE "ProductVersion", "@PANGO_VERSION_MAJOR@.@PANGO_VERSION_MINOR@.@PANGO_VERSION_MICRO@.@PANGO_INTERFACE_AGE@"

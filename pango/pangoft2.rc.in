@@ -26,7 +26,7 @@ VS_VERSION_INFO VERSIONINFO
 	VALUE "FileDescription", "PangoFT2 for Ardour and Mixbus"
 	VALUE "FileVersion", "@PANGO_VERSION_MAJOR@.@PANGO_VERSION_MINOR@.@PANGO_VERSION_MICRO@.@PANGO_INTERFACE_AGE@"
 	VALUE "InternalName", "pangoft2-@PANGO_API_VERSION@-@PANGO_CURRENT_MINUS_AGE@"
-	VALUE "LegalCopyright", "Copyright © 1999 Red Hat Software. Copyright © 2000 Tor Lillqvist"
+	VALUE "LegalCopyright", "Copyright 1999 Red Hat Software. Copyright 2000 Tor Lillqvist"
 	VALUE "OriginalFilename", "pangoft2-@PANGO_API_VERSION@-@PANGO_CURRENT_MINUS_AGE@.dll"
 	VALUE "ProductName", "PangoFT2"
 	VALUE "ProductVersion", "@PANGO_VERSION_MAJOR@.@PANGO_VERSION_MINOR@.@PANGO_VERSION_MICRO@.@PANGO_INTERFACE_AGE@"
