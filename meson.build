@@ -1,5 +1,5 @@
 project('pango', 'c', 'cpp',
-        version: '1.40.13',
+        version: '1.41.0',
         license: 'LGPLv2.1+',
         default_options: [
           'buildtype=debugoptimized',
@@ -196,7 +196,7 @@ pango_deps = []
 glib_req_version = '>= 2.33.12'
 libthai_req_version = '>= 0.1.9'
 harfbuzz_req_version = '>= 1.2.3'
-fontconfig_req_version = '>= 2.10.91'
+fontconfig_req_version = '>= 2.11.91'
 xft_req_version = '>= 2.0.0'
 cairo_req_version = '>= 1.12.10'
 
@@ -223,8 +223,8 @@ fontconfig_dep = dependency('fontconfig', version: fontconfig_req_version, requi
 if fontconfig_dep.found()
   pango_deps += fontconfig_dep
 
-  if cc.has_function('FcWeightFromOpenType', dependencies: fontconfig_dep)
-    pango_conf.set('HAVE_FCWEIGHTFROMOPENTYPE', 1)
+  if cc.has_function('FcWeightFromOpenTypeDouble', dependencies: fontconfig_dep)
+    pango_conf.set('HAVE_FCWEIGHTFROMOPENTYPEDOUBLE', 1)
   endif
 endif
 

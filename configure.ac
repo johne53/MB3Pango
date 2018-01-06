@@ -21,8 +21,8 @@ dnl
 
 dnl The triplet
 m4_define([pango_version_major], [1])
-m4_define([pango_version_minor], [40])
-m4_define([pango_version_micro], [14])
+m4_define([pango_version_minor], [41])
+m4_define([pango_version_micro], [0])
 
 m4_define([pango_version],
           [pango_version_major.pango_version_minor.pango_version_micro])
@@ -216,12 +216,12 @@ AM_CONDITIONAL(HAVE_HARFBUZZ, $have_harfbuzz)
 #
 have_fontconfig=false
 if $have_harfbuzz ; then
-  PKG_CHECK_MODULES(FONTCONFIG, fontconfig >= 2.10.91, have_fontconfig=true, :)
+  PKG_CHECK_MODULES(FONTCONFIG, fontconfig >= 2.11.91, have_fontconfig=true, :)
 fi
 if $have_fontconfig ; then
   pango_save_libs=$LIBS
   LIBS="$LIBS $FONTCONFIG_LIBS"
-  AC_CHECK_FUNCS(FcWeightFromOpenType)
+  AC_CHECK_FUNCS(FcWeightFromOpenTypeDouble)
   LIBS=$pango_save_libs
 fi
 
