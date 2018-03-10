@@ -45,8 +45,8 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;..\pango;.."
-				PreprocessorDefinitions="WIN32;DEBUG;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNING;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;..\pango;..;&quot;..\pango\temp-fribidi&quot;"
+				PreprocessorDefinitions="WIN32;FRIBIDI_STATIC;DONT_HAVE_FRIBIDI_UNICODE_VERSION_H;DEBUG;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNING;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				GeneratePreprocessedFile="0"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -71,7 +71,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)gmodule32$(GlibDllSuffix)D.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)mini_fribidi$(DllSuffix)D.lib"
+				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix)D.lib $(DllPrefix)gmodule32$(GlibDllSuffix)D.lib $(DllPrefix)glib32$(GlibDllSuffix)D.lib $(DllPrefix)temp_fribidi$(DllSuffix)D.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix)D.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;"
 				ModuleDefinitionFile=""
@@ -140,8 +140,8 @@
 				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories=".;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;..\pango;.."
-				PreprocessorDefinitions="_SECURE_SCL=0;WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;..\pango;..;&quot;..\pango\temp-fribidi&quot;"
+				PreprocessorDefinitions="_SECURE_SCL=0;FRIBIDI_STATIC;DONT_HAVE_FRIBIDI_UNICODE_VERSION_H;WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				StringPooling="false"
 				RuntimeLibrary="2"
 				EnableEnhancedInstructionSet="1"
@@ -163,7 +163,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)gmodule32$(GlibDllSuffix).lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)mini_fribidi$(DllSuffix).lib"
+				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix).lib $(DllPrefix)gmodule32$(GlibDllSuffix).lib $(DllPrefix)glib32$(GlibDllSuffix).lib $(DllPrefix)temp_fribidi$(DllSuffix).lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix).dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;"
 				ModuleDefinitionFile=""
@@ -229,8 +229,8 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;..\pango;.."
-				PreprocessorDefinitions="_SECURE_SCL=0;WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(GenericIncludeFolder)\cairo&quot;;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;..\pango;..;&quot;..\pango\temp-fribidi&quot;"
+				PreprocessorDefinitions="_SECURE_SCL=0;FRIBIDI_STATIC;DONT_HAVE_FRIBIDI_UNICODE_VERSION_H;WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				StringPooling="false"
 				RuntimeLibrary="2"
 				EnableEnhancedInstructionSet="1"
@@ -253,7 +253,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)gmodule32$(GlibDllSuffix)RDC.lib $(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)mini_fribidi$(DllSuffix)RDC.lib"
+				AdditionalDependencies="$(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib $(DllPrefix)gmodule32$(GlibDllSuffix)RDC.lib $(DllPrefix)glib32$(GlibDllSuffix)RDC.lib $(DllPrefix)temp_fribidi$(DllSuffix)RDC.lib"
 				OutputFile="$(OutDir)\$(DllPrefix)$(ProjectName)32$(DllSuffix)RDC.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)$(ConfigurationName)\lib&quot;"
 				IgnoreDefaultLibraryNames=""
@@ -439,18 +439,6 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;fi;fd"
 			>
-			<File
-				RelativePath="..\pango\mini-fribidi\fribidi.h"
-				>
-			</File>
-			<File
-				RelativePath="..\pango\mini-fribidi\fribidi_config.h"
-				>
-			</File>
-			<File
-				RelativePath="..\pango\mini-fribidi\fribidi_types.h"
-				>
-			</File>
 			<File
 				RelativePath="..\pango\pango-attributes.h"
 				>

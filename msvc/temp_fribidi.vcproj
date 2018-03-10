@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="mini_fribidi"
+	Name="temp_fribidi"
 	ProjectGUID="{95348CA0-D1F4-4D64-A5E6-7F6DF261D2E0}"
-	RootNamespace="mini_fribidi"
+	RootNamespace="temp_fribidi"
 	>
 	<Platforms>
 		<Platform
@@ -45,14 +45,14 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;.."
-				PreprocessorDefinitions="WIN32;DEBUG;_DEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				AdditionalIncludeDirectories=".;&quot;..\pango\temp-fribidi&quot;;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;.."
+				PreprocessorDefinitions="FRIBIDI_STATIC;DONT_HAVE_FRIBIDI_UNICODE_VERSION_H;WIN32;DEBUG;_DEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				StructMemberAlignment="0"
 				RuntimeTypeInfo="false"
-				PrecompiledHeaderFile=".\Debug\libmini_fribidi/libmini_fribidi.pch"
+				PrecompiledHeaderFile=""
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
@@ -83,7 +83,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\Debug\libmini_fribidi/libmini_fribidi.bsc"
+				OutputFile=".\Debug\libtemp_fribidi/libtemp_fribidi.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -125,13 +125,13 @@
 				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories=".;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;.."
-				PreprocessorDefinitions="_SECURE_SCL=0;WIN32;NDEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				AdditionalIncludeDirectories=".;&quot;..\pango\temp-fribidi&quot;;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;.."
+				PreprocessorDefinitions="_SECURE_SCL=0;FRIBIDI_STATIC;DONT_HAVE_FRIBIDI_UNICODE_VERSION_H;WIN32;NDEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				StringPooling="false"
 				RuntimeLibrary="2"
 				EnableEnhancedInstructionSet="1"
 				RuntimeTypeInfo="false"
-				PrecompiledHeaderFile=".\Release\libmini_fribidi/libmini_fribidi.pch"
+				PrecompiledHeaderFile=""
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				CompileAs="1"
@@ -161,7 +161,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\Release\libmini_fribidi/libmini_fribidi.bsc"
+				OutputFile=".\Release\libtemp_fribidi/libtemp_fribidi.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -201,13 +201,13 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/FI$(TargetSxsFolder)\targetsxs.h"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;.."
-				PreprocessorDefinitions="_SECURE_SCL=0;WIN32;NDEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
+				AdditionalIncludeDirectories=".;&quot;..\pango\temp-fribidi&quot;;&quot;$(GenericLibraryFolder)\glib-2.0\include&quot;;&quot;$(GenericIncludeFolder)\freetype&quot;;.."
+				PreprocessorDefinitions="_SECURE_SCL=0;FRIBIDI_STATIC;DONT_HAVE_FRIBIDI_UNICODE_VERSION_H;WIN32;NDEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN=\&quot;Pango\&quot;"
 				StringPooling="false"
 				RuntimeLibrary="2"
 				EnableEnhancedInstructionSet="1"
 				RuntimeTypeInfo="false"
-				PrecompiledHeaderFile=".\Release\libmini_fribidi/libmini_fribidi.pch"
+				PrecompiledHeaderFile=""
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
@@ -238,7 +238,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\Release\libmini_fribidi/libmini_fribidi.bsc"
+				OutputFile=".\Release\libtemp_fribidi/libtemp_fribidi.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -256,15 +256,71 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;for;f90"
 			>
 			<File
-				RelativePath="..\pango\mini-fribidi\fribidi.c"
+				RelativePath="..\pango\temp-fribidi\fribidi-bidi-types.c"
 				>
 			</File>
 			<File
-				RelativePath="..\pango\mini-fribidi\fribidi_char_type.c"
+				RelativePath="..\pango\temp-fribidi\fribidi-bidi.c"
 				>
 			</File>
 			<File
-				RelativePath="..\pango\mini-fribidi\fribidi_types.c"
+				RelativePath="..\pango\temp-fribidi\fribidi-brackets.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-char-sets-cap-rtl.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-char-sets-cp1255.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-char-sets-cp1256.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-char-sets-iso8859-6.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-char-sets-iso8859-8.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-char-sets-utf8.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-char-sets.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-deprecated.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-joining-types.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-joining.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-mirroring.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-run.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-shape.c"
+				>
+			</File>
+			<File
+				RelativePath="..\pango\temp-fribidi\fribidi.c"
 				>
 			</File>
 		</Filter>
@@ -273,15 +329,15 @@
 			Filter="h;hpp;hxx;hm;inl;fi;fd"
 			>
 			<File
-				RelativePath="..\pango\mini-fribidi\fribidi.h"
+				RelativePath="..\pango\temp-fribidi\fribidi-config.h"
 				>
 			</File>
 			<File
-				RelativePath="..\pango\mini-fribidi\fribidi_config.h"
+				RelativePath="..\pango\temp-fribidi\fribidi-types.h"
 				>
 			</File>
 			<File
-				RelativePath="..\pango\mini-fribidi\fribidi_types.h"
+				RelativePath="..\pango\temp-fribidi\fribidi.h"
 				>
 			</File>
 		</Filter>

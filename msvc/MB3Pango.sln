@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mini_fribidi", "mini_fribidi.vcproj", "{95348CA0-D1F4-4D64-A5E6-7F6DF261D2E0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "temp_fribidi", "temp_fribidi.vcproj", "{95348CA0-D1F4-4D64-A5E6-7F6DF261D2E0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{678FF1C8-3E42-4482-B4A4-C5DD73428060} = {678FF1C8-3E42-4482-B4A4-C5DD73428060}
 	EndProjectSection
