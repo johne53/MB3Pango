@@ -256,6 +256,10 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;for;f90"
 			>
 			<File
+				RelativePath="..\pango\temp-fribidi\fribidi-arabic.c"
+				>
+			</File>
+			<File
 				RelativePath="..\pango\temp-fribidi\fribidi-bidi-types.c"
 				>
 			</File>
