@@ -40,7 +40,7 @@
 #ifdef DONT_HAVE_FRIBIDI_UNICODE_VERSION_H
 # define FRIBIDI_UNICODE_VERSION "unknown"
 #else /* !DONT_HAVE_FRIBIDI_UNICODE_VERSION_H */
-// Commented out by JE - !!!!# include "fribidi-unicode-version.h"
+# include "fribidi-unicode-version.h"
 #endif /* !DONT_HAVE_FRIBIDI_UNICODE_VERSION_H */
 
 /* An string containing the version the Unicode standard implemented,

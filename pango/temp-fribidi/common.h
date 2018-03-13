@@ -72,7 +72,7 @@
 # include <string.h>
 #endif
 #ifdef HAVE_STRINGS_H
-// Commented out by JE - !!!!# include <strings.h>
+# include <strings.h>
 #endif
 
 /* FRIBIDI_BEGIN_STMT should be used at the beginning of your macro
@@ -111,7 +111,7 @@
 #ifdef HAVE_STRINGIZE
 # define STRINGIZE(symbol) #symbol
 #else /* !HAVE_STRINGIZE */
-// Commented out by JE -  !!!!#  error "No stringize operator available?"
+#  error "No stringize operator available?"
 #endif /* !HAVE_STRINGIZE */
 
 /* As per recommendation of GNU Coding Standards. */
