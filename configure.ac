@@ -22,7 +22,7 @@ dnl
 dnl The triplet
 m4_define([pango_version_major], [1])
 m4_define([pango_version_minor], [42])
-m4_define([pango_version_micro], [0])
+m4_define([pango_version_micro], [1])
 
 m4_define([pango_version],
           [pango_version_major.pango_version_minor.pango_version_micro])
@@ -487,6 +487,10 @@ have_libthai=false
 PKG_CHECK_MODULES(LIBTHAI, libthai >= $LIBTHAI_REQUIRED_VERSION, have_libthai=true, :)
 if $have_libthai; then
 	AC_DEFINE(HAVE_LIBTHAI, 1, [Whether libthai is available])
+	pango_save_libs=$LIBS
+	LIBS="$LIBS $LIBTHAI_LIBS"
+	AC_CHECK_FUNCS(th_brk_find_breaks)
+	LIBS=$pango_save_libs
 fi
 
 #
