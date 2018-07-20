@@ -22,7 +22,7 @@ dnl
 dnl The triplet
 m4_define([pango_version_major], [1])
 m4_define([pango_version_minor], [42])
-m4_define([pango_version_micro], [1])
+m4_define([pango_version_micro], [2])
 
 m4_define([pango_version],
           [pango_version_major.pango_version_minor.pango_version_micro])
@@ -669,7 +669,7 @@ pango/pangoft2.rc
 pango/pangowin32.rc
 pango/pangocairo.rc
 pango/pangoxft.rc
-pango-view/Makefile
+utils/Makefile
 examples/Makefile
 docs/Makefile
 docs/version.xml

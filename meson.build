@@ -1,5 +1,5 @@
 project('pango', 'c', 'cpp',
-        version: '1.42.1',
+        version: '1.42.2',
         license: 'LGPLv2.1+',
         default_options: [
           'buildtype=debugoptimized',
@@ -510,8 +510,8 @@ configure_file(output: 'config.h', configuration: pango_conf)
 root_inc = include_directories('.')
 
 subdir('pango')
+subdir('utils')
 subdir('examples')
-subdir('pango-view')
 subdir('tests')
 subdir('tools')
 
