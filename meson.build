@@ -186,7 +186,7 @@ endif
 # Dependencies
 pango_deps = []
 
-glib_req_version = '>= 2.33.12'
+glib_req_version = '>= 2.38.0'
 fribidi_req_version = '>= 0.19.7'
 libthai_req_version = '>= 0.1.9'
 harfbuzz_req_version = '>= 1.4.2'
@@ -312,6 +312,8 @@ if host_system == 'darwin'
   if has_core_text
     pango_conf.set('HAVE_CORE_TEXT', 1)
   endif
+
+  pango_deps += dependency('appleframeworks', modules: [ 'CoreFoundation', 'ApplicationServices' ])
 endif
 
 cairo_pkgconfig_found = false
