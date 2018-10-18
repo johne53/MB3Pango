@@ -54,10 +54,6 @@ sub process_file
 }
 
 process_file ("config.h.win32");
-process_file ("pango.pc");
-process_file ("pangocairo.pc");
-process_file ("pangoft2.pc");
-process_file ("pangowin32.pc");
 
 my $command=join(' ',@ARGV);
 if ($command eq -buildall) {
