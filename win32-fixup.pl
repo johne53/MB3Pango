@@ -1,15 +1,15 @@
 #! e:/program files/perl/bin/perl.exe
-#  version info can be found in 'configure.ac'
+#  version info can be found in 'NEWS'
 
 require "../local-paths.lib";
 
 $api_version = "1.0";
-$pango_version = "1.40.14";
+$pango_version = "1.42.04";
 $major = 1;
-$minor = 40;
-$micro = 14;
-$binary_age = 4014;
-$interface_age = 14;
+$minor = 42;
+$micro = 04;
+$binary_age = 4204;
+$interface_age = 4;
 $current_minus_age = 0;
 $exec_prefix = "lib";
 
