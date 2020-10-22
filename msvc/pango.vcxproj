@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release with Debugging Capability|x64">
+      <Configuration>Release with Debugging Capability</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F2DEC9F3-59D5-477A-9161-15ABC1D49693}</ProjectGuid>
+    <RootNamespace>pango</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release with Debugging Capability|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release with Debugging Capability|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+    <Import Project="pango.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+    <Import Project="pango.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+    <Import Project="pango.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.30323.82</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\bin\</OutDir>
+    <IntDir>$(ProjectDir)$(Platform)\$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <TargetName>$(DllPrefix)$(ProjectName)64$(DllSuffix)D</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\bin\</OutDir>
+    <IntDir>$(ProjectDir)$(Platform)\$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <TargetName>$(DllPrefix)$(ProjectName)64$(DllSuffix)</TargetName>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release with Debugging Capability|x64'">
+    <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\bin\</OutDir>
+    <IntDir>$(ProjectDir)$(Platform)\$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <TargetName>$(DllPrefix)$(ProjectName)64$(DllSuffix)RDC</TargetName>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Message>Prepare enumtypes and configuration file(s)</Message>
+      <Command>copy /Y "..\pango\pango-enum-types.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango\pango-enum-types.h"
+cd ..
+copy /Y "config.h.win32" "config.h"
+copy /Y "config.h.win32" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\config.h"
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/FI$(TargetSxsFolder)\targetsxs.h %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;$(GenericIncludeFolder)\cairo;$(GenericLibraryFolder)\glib-2.0\include;$(GenericIncludeFolder)\freetype;..\pango;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN64;DEBUG;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNING;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN="Pango";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+      <StringPooling>false</StringPooling>
+      <ForcedIncludeFiles>$(TargetSxsFolder)\targetsxs.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0809</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>$(DllPrefix)gobject64$(GlibDllSuffix)D$(LibraryExt);$(DllPrefix)gmodule64$(GlibDllSuffix)D$(LibraryExt);$(DllPrefix)glib64$(GlibDllSuffix)D$(LibraryExt);$(DllPrefix)mini_fribidi64$(DllSuffix)D$(LibraryExt);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)$(Platform)\$(Configuration)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile />
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\libpango_1_0/libpango_1_0.bsc</OutputFile>
+    </Bscmake>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetPath)" "$(Debug64TargetFolder)\$(TargetName)$(TargetExt)"
+copy /Y "$(TargetPath)" "$(Debug64TestSuiteFolder)\$(TargetName)$(TargetExt)"
+copy /Y "$(OutDir)$(TargetName)$(LibraryExt)" "$(GenericWin64LibraryFolder)\$(TargetName)$(LibraryExt)"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Message>Prepare enumtypes and configuration file(s)</Message>
+      <Command>copy /Y "..\pango\pango-enum-types.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango\pango-enum-types.h"
+cd ..
+copy /Y "config.h.win32" "config.h"
+copy /Y "config.h.win32" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\config.h"
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/FI$(TargetSxsFolder)\targetsxs.h %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>.;$(GenericIncludeFolder)\cairo;$(GenericLibraryFolder)\glib-2.0\include;$(GenericIncludeFolder)\freetype;..\pango;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_SECURE_SCL=0;WIN32;_WIN64;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN="Pango";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>CompileAsC</CompileAs>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <ForcedIncludeFiles>$(TargetSxsFolder)\targetsxs.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0809</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>$(DllPrefix)gobject64$(GlibDllSuffix)$(LibraryExt);$(DllPrefix)gmodule64$(GlibDllSuffix)$(LibraryExt);$(DllPrefix)glib64$(GlibDllSuffix)$(LibraryExt);$(DllPrefix)mini_fribidi64$(DllSuffix)$(LibraryExt);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)$(Platform)\$(Configuration)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile />
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\libpango_1_0/libpango_1_0.bsc</OutputFile>
+    </Bscmake>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetPath)" "$(Release64TargetFolder)\$(TargetName)$(TargetExt)"
+copy /Y "$(TargetPath)" "$(Release64TestSuiteFolder)\$(TargetName)$(TargetExt)"
+copy /Y "$(OutDir)$(TargetName)$(LibraryExt)" "$(GenericWin64LibraryFolder)\$(TargetName)$(LibraryExt)"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release with Debugging Capability|x64'">
+    <PreBuildEvent>
+      <Message>Prepare enumtypes and configuration file(s)</Message>
+      <Command>mkdir "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango" 2&gt; NUL
+python $(GlibBuildRootFolder)/gobject/glib-mkenums --template ../pango/pango-enum-types.h.template ../pango/pango.h ../pango/pango-attributes.h  ../pango/pango-bidi-type.h ../pango/pango-break.h ../pango/pango-color-table.h ../pango/pango-context.h ../pango/pango-coverage.h ../pango/pango-emoji-table.h ../pango/pango-engine.h ../pango/pango-features.h ../pango/pango-font.h ../pango/pango-fontmap.h ../pango/pango-fontset.h ../pango/pango-glyph.h ../pango/pango-glyph-item.h ../pango/pango-gravity.h ../pango/pango-item.h ../pango/pango-language.h ../pango/pango-layout.h ../pango/pango-matrix.h ../pango/pango-modules.h ../pango/pango-renderer.h ../pango/pango-script.h ../pango/pango-tabs.h ../pango/pango-types.h ../pango/pango-utils.h &gt; ../pango/pango-enum-types.h
+python $(GlibBuildRootFolder)/gobject/glib-mkenums --template ../pango/pango-enum-types.c.template ../pango/pango.h ../pango/pango-attributes.h  ../pango/pango-bidi-type.h ../pango/pango-break.h ../pango/pango-color-table.h ../pango/pango-context.h ../pango/pango-coverage.h ../pango/pango-emoji-table.h ../pango/pango-engine.h ../pango/pango-features.h ../pango/pango-font.h ../pango/pango-fontmap.h ../pango/pango-fontset.h ../pango/pango-glyph.h ../pango/pango-glyph-item.h ../pango/pango-gravity.h ../pango/pango-item.h ../pango/pango-language.h ../pango/pango-layout.h ../pango/pango-matrix.h ../pango/pango-modules.h ../pango/pango-renderer.h ../pango/pango-script.h ../pango/pango-tabs.h ../pango/pango-types.h ../pango/pango-utils.h &gt; ../pango/pango-enum-types.c
+copy /Y "..\pango\pango-enum-types.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango\pango-enum-types.h"
+cd ..
+perl win32-fixup.pl
+copy /Y "config.h.win32" "config.h"
+copy /Y "config.h.win32" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\config.h"
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/FI$(TargetSxsFolder)\targetsxs.h %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;$(GenericIncludeFolder)\cairo;$(GenericLibraryFolder)\glib-2.0\include;$(GenericIncludeFolder)\freetype;..\pango;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_SECURE_SCL=0;WIN32;_WIN64;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HB_DONT_DEFINE_STDINT;HAVE_CONFIG_H;HAVE_GLIB=1;HAVE_OT=1;HAVE_FREETYPE=1;PANGO_ENABLE_BACKEND;PANGO_ENABLE_ENGINE;G_LOG_DOMAIN="Pango";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+      <ForcedIncludeFiles>$(TargetSxsFolder)\targetsxs.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0809</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>$(DllPrefix)gobject64$(GlibDllSuffix)RDC$(LibraryExt);$(DllPrefix)gmodule64$(GlibDllSuffix)RDC$(LibraryExt);$(DllPrefix)glib64$(GlibDllSuffix)RDC$(LibraryExt);$(DllPrefix)mini_fribidi64$(DllSuffix)RDC$(LibraryExt);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)$(Platform)\$(Configuration)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile />
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\libpango_1_0/libpango_1_0.bsc</OutputFile>
+    </Bscmake>
+    <PostBuildEvent>
+      <Command>mkdir "$(GenericLibraryFolder)\pkgconfig" 2&gt; NUL
+mkdir "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango" 2&gt; NUL
+copy /Y "..\pango\pango.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-attributes.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-bidi-type.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-break.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-color-table.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-context.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-coverage.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-engine.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-features.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-font.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-fontmap.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-fontset.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-glyph.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-glyph-item.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-gravity.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-item.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-language.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-language-sample-table.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-layout.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-matrix.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-modules.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-ot.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-renderer.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-script.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-script-lang-table.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-tabs.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-types.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-utils.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pango-version-macros.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "..\pango\pangocoretext.h" "$(GenericIncludeFolder)\pango-$(PangoApiVersion)\pango"
+copy /Y "$(TargetPath)" "$(Release64TestSuiteFolder)\$(TargetName)$(TargetExt)"
+copy /Y "$(OutDir)$(TargetName)$(LibraryExt)" "$(GenericWin64LibraryFolder)\$(TargetName)$(LibraryExt)"
+copy /Y "..\pango.pc" "$(GenericLibraryFolder)\pkgconfig"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\pango\break-arabic.c" />
+    <ClCompile Include="..\pango\break-indic.c" />
+    <ClCompile Include="..\pango\break-thai.c" />
+    <ClCompile Include="..\pango\break.c" />
+    <ClCompile Include="..\pango\ellipsize.c" />
+    <ClCompile Include="..\pango\fonts.c" />
+    <ClCompile Include="..\pango\glyphstring.c" />
+    <ClCompile Include="..\pango\modules.c" />
+    <ClCompile Include="..\pango\pango-attributes.c" />
+    <ClCompile Include="..\pango\pango-bidi-type.c" />
+    <ClCompile Include="..\pango\pango-color.c" />
+    <ClCompile Include="..\pango\pango-context.c" />
+    <ClCompile Include="..\pango\pango-coverage.c" />
+    <ClCompile Include="..\pango\pango-emoji.c" />
+    <ClCompile Include="..\pango\pango-engine.c" />
+    <ClCompile Include="..\pango\pango-enum-types.c" />
+    <ClCompile Include="..\pango\pango-fontmap.c" />
+    <ClCompile Include="..\pango\pango-fontset.c" />
+    <ClCompile Include="..\pango\pango-glyph-item.c" />
+    <ClCompile Include="..\pango\pango-gravity.c" />
+    <ClCompile Include="..\pango\pango-item.c" />
+    <ClCompile Include="..\pango\pango-language.c" />
+    <ClCompile Include="..\pango\pango-layout.c" />
+    <ClCompile Include="..\pango\pango-markup.c" />
+    <ClCompile Include="..\pango\pango-matrix.c" />
+    <ClCompile Include="..\pango\pango-renderer.c" />
+    <ClCompile Include="..\pango\pango-script.c" />
+    <ClCompile Include="..\pango\pango-tabs.c" />
+    <ClCompile Include="..\pango\pango-utils.c" />
+    <ClCompile Include="..\pango\reorder-items.c" />
+    <ClCompile Include="..\pango\shape.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\pango\mini-fribidi\fribidi.h" />
+    <ClInclude Include="..\pango\mini-fribidi\fribidi_config.h" />
+    <ClInclude Include="..\pango\mini-fribidi\fribidi_types.h" />
+    <ClInclude Include="..\pango\pango-attributes.h" />
+    <ClInclude Include="..\pango\pango-bidi-type.h" />
+    <ClInclude Include="..\pango\pango-break.h" />
+    <ClInclude Include="..\pango\pango-color-table.h" />
+    <ClInclude Include="..\pango\pango-context.h" />
+    <ClInclude Include="..\pango\pango-coverage.h" />
+    <ClInclude Include="..\pango\pango-emoji-private.h" />
+    <ClInclude Include="..\pango\pango-emoji-table.h" />
+    <ClInclude Include="..\pango\pango-engine-private.h" />
+    <ClInclude Include="..\pango\pango-engine.h" />
+    <ClInclude Include="..\pango\pango-enum-types.h" />
+    <ClInclude Include="..\pango\pango-features.h" />
+    <ClInclude Include="..\pango\pango-font.h" />
+    <ClInclude Include="..\pango\pango-fontmap.h" />
+    <ClInclude Include="..\pango\pango-fontset.h" />
+    <ClInclude Include="..\pango\pango-glyph-item.h" />
+    <ClInclude Include="..\pango\pango-glyph.h" />
+    <ClInclude Include="..\pango\pango-gravity.h" />
+    <ClInclude Include="..\pango\pango-impl-utils.h" />
+    <ClInclude Include="..\pango\pango-item.h" />
+    <ClInclude Include="..\pango\pango-language-sample-table.h" />
+    <ClInclude Include="..\pango\pango-language.h" />
+    <ClInclude Include="..\pango\pango-layout-private.h" />
+    <ClInclude Include="..\pango\pango-layout.h" />
+    <ClInclude Include="..\pango\pango-matrix.h" />
+    <ClInclude Include="..\pango\pango-modules.h" />
+    <ClInclude Include="..\pango\pango-renderer.h" />
+    <ClInclude Include="..\pango\pango-script-lang-table.h" />
+    <ClInclude Include="..\pango\pango-script-private.h" />
+    <ClInclude Include="..\pango\pango-script.h" />
+    <ClInclude Include="..\pango\pango-tabs.h" />
+    <ClInclude Include="..\pango\pango-types.h" />
+    <ClInclude Include="..\pango\pango-utils.h" />
+    <ClInclude Include="..\pango\pango.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\pango\pango.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
