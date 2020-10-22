@@ -44,7 +44,16 @@ sub process_file
 	    s/\@Release32TargetFolder@/$release32_target_folder/g;
 	    s/\@Debug32PangoModulesFolder@/$debug32_pango_modules_folder/g;
 	    s/\@Release32PangoModulesFolder@/$release32_pango_modules_folder/g;
-	    s/\@TargetSxSFolder@/$target_sxs_folder/g;
+	    s/\@GenericWin64LibraryFolder@/$generic_win64_library_folder/g;
+	    s/\@GenericWin64BinaryFolder@/$generic_win64_binary_folder/g;
+	    s/\@Debug64TestSuiteFolder@/$debug64_testsuite_folder/g;
+	    s/\@Release64TestSuiteFolder@/$release64_testsuite_folder/g;
+	    s/\@Debug64TargetFolder@/$debug64_target_folder/g;
+	    s/\@Release64TargetFolder@/$release64_target_folder/g;
+	    s/\@Debug64PangoModulesFolder@/$debug64_pango_modules_folder/g;
+	    s/\@Release64PangoModulesFolder@/$release64_pango_modules_folder/g;
+		s/\@TargetSxSFolder@/$target_sxs_folder/g;
+	    s/\@LibraryExt@/$library_ext/g;
 	    s/\@prefix@/$prefix/g;
 	    s/\@exec_prefix@/$exec_prefix/g;
 	    s/\@includedir@/$generic_include_folder/g;
@@ -53,18 +62,26 @@ sub process_file
 	}
 }
 
-process_file ("config.h.win32");
+my $command=join(' ',@ARGV);
+
+if (-1 != index($command, "-linux")) {
+	$library_ext = ".a";
+} else {
+	$library_ext = ".lib";
+}
+
 process_file ("pango.pc");
 process_file ("pangocairo.pc");
 process_file ("pangoft2.pc");
 process_file ("pangowin32.pc");
 
-my $command=join(' ',@ARGV);
 if ($command eq -buildall) {
+	process_file ("config.h.win32");
 	process_file ("pango/pango-features.h");
 	process_file ("pango/pango.rc");
 	process_file ("pango/pangocairo.rc");
 	process_file ("pango/pangoft2.rc");
 	process_file ("pango/pangowin32.rc");
 	process_file ("msvc/pango.vsprops");
+	process_file ("msvc/pango.props");
 }
